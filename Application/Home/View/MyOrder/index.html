@@ -1,0 +1,116 @@
+<extend name="tpl/template" />
+<block name="main">
+<link type="text/css" href="__PUBLIC__/css/cart.css" rel="stylesheet" />
+	<link type="text/css" href="__PUBLIC__/css/font-awesome.min.css" rel="stylesheet" />
+<!-- <style type="css/text">
+		.clears{ clear:both;}
+	.for-liucheng{width:70%;margin:30px auto 50px auto; height:50px;padding:20px 0 0 0; position:relative;}
+	.liulist{float:left;width:20%; height:7px; background:#ccc;}
+	.liutextbox{ position:absolute;width:100%;left:0;top:10px;}
+	.liutextbox .liutext{float:left;width:20%; text-align:center;}
+	.liutextbox .liutext em{ display:inline-block;width:24px; height:24px;-moz-border-radius: 24px; -webkit-border-radius: 24px;border-radius:24px; background:#ccc; text-align:center; font-size:14px; line-height:24px; font-style:normal; font-weight:bold;color:#fff;}
+	.liutextbox .liutext strong{ display:inline-block;height:26px; line-height:26px; font-weight:400;}
+	.liulist.for-cur{ background:#77b852;}
+	.liutextbox .for-cur em{ background:#77b852;}
+	.liutextbox .for-cur strong{color:#77b852;}
+
+</style> -->
+<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="__MODULE__/Index/index">首页</a></li>
+					<li class="active">登录</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	
+	<!--top-header-->
+	<!--start-logo-->
+	
+	<!--start-logo-->
+	<!--bottom-header-->
+	<div class="header-bottom">
+	<div class="ckeckout-top">
+			<div style="width:1150px;margin:100px;" class="cart-items">
+			 <h3>我的购物袋</h3>
+			
+			   <!-- 遍历 -->
+		   <div class="for-liucheng">
+      		<div class="liulist for-cur"></div>
+		    <div class="liulist for-cur"></div>
+		    <div class="liulist for-cur"></div>
+		    <div class="liulist"></div>
+		    <div class="liulist"></div>
+	        <div class="liutextbox">
+		        <div class="liutext for-cur"><em>1</em><br /><strong>提交订单</strong></div>
+		        <div class="liutext for-cur"><em>2</em><br /><strong>选择支付方式</strong></div>
+		        <div class="liutext for-cur"><em>3</em><br /><strong>等待发货</strong></div>
+		        <div class="liutext"><em>4</em><br /><strong>已发货</strong></div>
+		        <div class="liutext"><em>5</em><br /><strong>订单完成</strong></div>
+	        </div>
+     	</div>
+			<foreach>
+			<div class="" >
+                <ul class="">
+                    <li><span>商品</span></li>
+                    <li><span>产品名字</span></li>		
+                    <li><span>价格</span></li>
+                    <li><span>数量</span></li>
+                    <li><span>交易操作</span> </li>
+                    <div class="clearfix"> </div>
+                </ul>
+                <foreach>
+                <ul class="">
+                    
+                        <li class=""><a href="single.html" ><img src="__PUBLIC__/images/c-1.jpg" class="img-responsive" alt=""></a>
+                        </li>
+                        <!-- 从数据库取出来 -->
+                        <li>11</li>
+                        <li>22</li>
+                        <li><span class="cost">
+
+						<eq name="{a}" value="1">等待发货</eq>
+						<eq name="{a}" value="2">已经发货</eq>
+						<eq name="{a}" value="3">确认收货</eq>
+                        </span></li>
+                    <div class=""> </div>
+                </ul>
+                </foreach>
+                
+            </div>
+            </foreach>
+			</div> 
+
+		 </div>
+		
+	</div>
+	<!-- <div class="contact">
+		<div class="container"> -->
+	<!-- 三级联动 -->
+
+			
+	<!--bottom-header-->
+	<!--start-breadcrumbs-->
+	
+	<!--end-breadcrumbs-->
+	<!--contact-start-->
+	
+		
+			
+			
+	<!-- 	</div>
+	</div> -->
+	<!--contact-end-->
+	<!--map-start-->
+	
+	<!--map-end-->
+	<!--information-starts-->
+	
+	<!--information-end-->
+	<!--footer-starts-->
+	
+	<!--footer-end-->	
+</block>

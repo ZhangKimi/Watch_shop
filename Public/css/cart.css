@@ -1,0 +1,215 @@
+@charset "utf-8";
+#shoplist {
+	margin: 20px;
+
+}
+#shoplist table {
+	border: 1px solid #E1E1E1;
+	color: #90918D;
+	font-family: "Microsoft YaHei";
+}
+
+#recaddress {
+	margin-bottom: 50px;
+}
+
+#displayTotal {
+	font-size: 15px;
+	color: #492829;
+	font-weight: bold;
+}
+
+#total {
+	color: #DC233E;
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+.list {
+	height: 100px;
+}
+
+.list img {
+	float: left;
+}
+
+.list #title {
+	float: left;
+	width: 400px;
+	padding-left: 10px;
+}
+
+.list td {
+	border-bottom: 1px solid #E4E4E4;
+}
+
+#footer {
+	margin: 20px auto;	
+	margin-bottom: 46px;
+	width: 82%;
+	height: 50px;
+	padding: 0px auto;
+}
+
+#footer #backbtn {
+	display: block;
+	width: 97px;
+	height: 46px;
+	line-height: 41px;
+	font-size: 15px;
+	color: #000;
+	font-family: "Microsoft YaHei";
+	font-weight: normal;
+	float: left;
+}
+
+#footer #backbtn:hover {
+	cursor: pointer;
+}
+
+#footer #pay {
+	display: block;
+	width: 97px;
+	height: 46px;
+	line-height: 41px;
+	font-size: 15px;
+	color: #FFF;
+	margin-right: auto;
+	font-family: "Microsoft YaHei";
+	font-weight: normal;
+	float: right;
+	clear: right;
+}
+
+#footer #pay:hover {
+	cursor: pointer;
+}
+
+.list #attribute {
+	float: left;
+	padding-left: 10px;
+}
+
+#showTotal {
+	color: #DF5663;
+	font-weight: bold;
+	font-family: "Microsoft YaHei";
+}
+
+.spinner {
+  width: 80px;
+}
+.spinner input {
+  text-align: right;
+}
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+  position: absolute;
+  top: 0;
+  left: 4px;
+}
+
+.commend {
+	width: 1113px;
+	height: 350px;
+	margin: 30px auto 80px auto;
+}
+
+.commend #commend_title {
+	width: 100%;
+	height: auto;
+	color: #000;
+	font-size: 20px;
+	font-family: "Microsoft YaHei";
+	text-align: left;
+}
+
+.goods {
+	text-align: left;
+}
+
+.goods ul {
+	height: 320px;
+}
+
+.goods ul li {
+	width: 221px;
+	height: 320px;
+	float: left;
+	border-top: 1px solid #EFEFEF;
+	border-left: 1px solid #EFEFEF;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+.goods ul li:last-child {
+	border-right: 1px solid #EFEFEF;
+}
+
+.goods ul li #goods_img {
+	margin: 15px 20px;
+	width: 181px;
+}
+
+.goods ul li #proName {
+	width: 201px;
+	display: block;
+	margin: 2px 10px;
+}
+
+.goods ul li #stock {
+	width: 201px;
+	display: block;
+	margin: 2px 10px;
+}
+
+.goods ul li #add {
+	width: 201px;
+	height: 15px;
+	display: block;
+	margin: 5px 10px;
+}
+
+.goods ul li #add img {
+	float: left;
+	margin-top: 2px;
+}
+
+.goods ul li #add label {
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+/*忘记密码  必要样式*/
+.clears{ clear:both;}
+.for-liucheng{width:70%;margin:30px auto 50px auto; height:50px;padding:20px 0 0 0; position:relative;}
+.liulist{float:left;width:20%; height:7px; background:#ccc;}
+.liutextbox{ position:absolute;width:100%;left:0;top:10px;}
+.liutextbox .liutext{float:left;width:20%; text-align:center;}
+.liutextbox .liutext em{ display:inline-block;width:24px; height:24px;-moz-border-radius: 24px; -webkit-border-radius: 24px;border-radius:24px; background:#ccc; text-align:center; font-size:14px; line-height:24px; font-style:normal; font-weight:bold;color:#fff;}
+.liutextbox .liutext strong{ display:inline-block;height:26px; line-height:26px; font-weight:400;}
+.liulist.for-cur{ background:#77b852;}
+.liutextbox .for-cur em{ background:#77b852;}
+.liutextbox .for-cur strong{color:#77b852;}

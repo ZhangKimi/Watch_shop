@@ -1,0 +1,45 @@
+<extend name="tpl/template" />
+<block name="main">
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="__MODULE__/Index/index">首页</a></li>
+					<li class="active">登录</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--account-starts-->
+	<div class="account">
+		<div class="container">
+		<div class="account-top heading">
+				<h2>会员登录</h2>
+			</div>
+			<div class="account-main">
+				<div class="col-md-6 account-left">
+					<h3>已有账户?&nbsp;&nbsp;请登录</h3>
+					<div class="account-bottom">
+						<form action="__MODULE__/Login/dologin" method="post">
+							<input placeholder="电子邮箱 / 用户名" id="username" type="text" name="username" required>
+							<input placeholder="密码" type="password" id="userpass" name="userpass" required>
+							<div class="address">
+								<a class="forgot" href="#">忘记密码?</a>
+								<input type="submit" value="登&nbsp;&nbsp;录" id="dologin">
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-6 account-right account-left">
+					<h3>还没有账户?&nbsp;&nbsp;注册新用户</h3>
+					<p>在我们的商城注册一个新用户，您将更快速的通过结账过程，可以在用户中心存储多个送货地址，查看和跟踪您的订单。</p>
+					<a href="__MODULE__/Register">创建一个新的用户</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--account-end-->
+</block>

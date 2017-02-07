@@ -1,0 +1,87 @@
+<extend name="tpl/template" />
+<block name="main">
+	<style>
+		#message {
+			width: 500px;
+			height: 150px;
+			margin-top: 80px;
+			margin-left: 30%;
+			margin-right: auto;
+			margin-bottom: 20px;
+			padding: 0px;
+		}
+
+		#message #success {
+			float: left;
+			margin-right: 30px;
+		}
+
+		#message #box {
+			margin-top: 28px;
+			float: left;
+		}
+
+		#message #box #mess1 {
+			font-size: 35px;
+		}
+
+		#message #box #mess2 {
+			font-size: 20px;
+			font-weight: bold;
+			color: #E57137;
+		}
+
+		#log {
+			margin: 10px auto 80px 45%;
+			clear: both;
+		}
+
+		#log #login {
+			background: #8DC246;
+			display: block;
+			line-height: 35px;
+			text-align: center;
+			color: #FFF;
+			font-size: 18px;
+			width: 115px;
+			height: 36px;
+		}
+
+		#log #login:hover {
+			cursor: pointer;
+		}
+	</style>
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="index.html">首页</a></li>
+					<li class="active">邮箱激活</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<div id="message">
+		<img src="__PUBLIC__/images/success.gif" id="success"/>
+		<div id="box">
+			<span id="mess1">激活邮件已成功发出</span>
+			<br /><span id="mess2">{$email}</span>
+			<br /><span id="mess3">请在{$token_exptime}小时内登录邮箱 , 按照邮件中的提示激活帐号</span>
+		</div>
+	</div>
+	<div id="log">
+		<span id="login">登录邮箱</span>
+	</div>
+	<script type="text/javascript">
+		$("#login").click(function(){
+			var reg = /@.*?$/;
+			var email = $("#mess2").html();
+			var str = reg.exec(email);
+			str = String(str).substr(1);
+			str = "http://mail."+str;
+			window.open(str);
+		});
+	</script>
+</block>

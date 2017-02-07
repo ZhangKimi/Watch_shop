@@ -1,0 +1,175 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luxury Watches - 重置用户密码</title>
+        <link rel="shortcut icon" href="/watch_shop/Public/admin/favicon.ico">
+        <link href="/watch_shop/Public/admin/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/animate.min.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/style.min.css?v=4.0.0" rel="stylesheet">
+    </head>
+
+    <body class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>重置 <?php echo ($username); ?> 的密码</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <form class="form-horizontal" action="/watch_shop/index.php/Admin/Adminpwd/restpwdsava" method="POST">
+                                <input type="hidden" name="id" value="<?php echo ($id); ?>" />
+                                <div class="form-group" id="pwdgroup">
+                                    <label class="col-sm-2 control-label">密 &nbsp;&nbsp;码</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="pwd" name="userpass">
+                                        <span class="help-block m-b-none" id="pwdmess">6-16位，英文、数字、!@#=?_.符号组成</span>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group" id="repwdgroup">
+                                    <label class="col-sm-2 control-label">确认密码</label>
+
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="repwd">
+                                        <span class="help-block m-b-none" id="repwdmess">6-16位，英文、数字、!@#=?_.符号组成</span>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button class="btn btn-primary" type="submit" onclick="return check_form();">保存内容</button>
+                                        <!-- <button class="btn btn-white" type="submit">取消</button> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/watch_shop/Public/admin/js/jquery.min.js?v=2.1.4"></script>
+        <script src="/watch_shop/Public/admin/js/bootstrap.min.js?v=3.3.5"></script>
+        <script src="/watch_shop/Public/admin/js/content.min.js?v=1.0.0"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/iCheck/icheck.min.js"></script>
+        <script>
+            $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+
+            // 正则表达式
+
+            // 密码正则 -- 6-16位，英文、数字、!@#=?_.符号组成 --
+            var p2 = /^[A-Za-z0-9\.\\w_=\!\@\#\?]{6,16}$/;
+
+            // -------------------------------------------------------------
+            
+
+            // 密码判断
+            $("#pwd").blur(function() {
+
+                if($("#pwd").val() == ""){
+                    $("#pwdgroup").addClass('has-warning');
+                    $("#pwdgroup").removeClass('has-error');
+                    $("#pwdgroup").removeClass('has-success');
+                    $("#pwdmess").html("密码不可以为空！");
+                }else {
+                    if(!p2.test($("#pwd").val())){
+                        $("#pwdgroup").removeClass('has-warning');
+                        $("#pwdgroup").removeClass('has-success');
+                        $("#pwdgroup").addClass('has-error');
+                        $("#pwdmess").html("密码格式不正确！");
+                    }else {
+                        $("#pwdgroup").removeClass('has-warning');
+                        $("#pwdgroup").removeClass('has-error');
+                        $("#pwdgroup").addClass('has-success');
+                        $("#pwdmess").html("验证通过");
+                    }
+                }
+            });
+             
+            // ------------------------------------------------------------- 
+
+            // 确认密码判断
+            $("#repwd").blur(function() {
+                if($("#repwd").val() == ""){
+                    $("#repwdgroup").addClass('has-warning');
+                    $("#repwdgroup").removeClass('has-error');
+                    $("#repwdgroup").removeClass('has-success');
+                    $("#repwdmess").html("确认密码不可以为空！");
+                }else {
+                    if(!p2.test($("#repwd").val())){
+                        $("#repwdgroup").removeClass('has-warning');
+                        $("#repwdgroup").removeClass('has-success');
+                        $("#repwdgroup").addClass('has-error');
+                        $("#repwdmess").html("确认密码格式不正确！");
+                    }else {
+                        if($("#repwd").val() != $("#pwd").val()){
+                            $("#repwdgroup").removeClass('has-warning');
+                            $("#repwdgroup").removeClass('has-success');
+                            $("#repwdgroup").addClass('has-error');
+                            $("#repwdmess").html("两次密码输入不一致！");
+                        }else {
+                            $("#repwdgroup").removeClass('has-warning');
+                            $("#repwdgroup").removeClass('has-error');
+                            $("#repwdgroup").addClass('has-success');
+                            $("#repwdmess").html("验证通过");
+                        }
+                    }
+                }
+            });
+           
+
+            // ------------------------------------------------------------- 
+            // 提交判断
+             
+            function check_form() {
+
+                if($("#pwd").val() == ""){
+                    $("#pwdgroup").addClass('has-warning');
+                    $("#pwdgroup").removeClass('has-error');
+                    $("#pwdgroup").removeClass('has-success');
+                    $("#pwdmess").html("密码不可以为空！");
+                    return false;
+                }
+
+                if(!p2.test($("#pwd").val())){
+                    $("#pwdgroup").removeClass('has-warning');
+                    $("#pwdgroup").removeClass('has-success');
+                    $("#pwdgroup").addClass('has-error');
+                    $("#pwdmess").html("密码格式不正确！");
+                    return false;
+                }
+
+                if($("#repwd").val() == ""){
+                    $("#repwdgroup").addClass('has-warning');
+                    $("#repwdgroup").removeClass('has-error');
+                    $("#repwdgroup").removeClass('has-success');
+                    $("#repwdmess").html("确认密码不可以为空！");
+                    return false;
+                }
+
+                if(!p2.test($("#repwd").val())){
+                    $("#repwdgroup").removeClass('has-warning');
+                    $("#repwdgroup").removeClass('has-success');
+                    $("#repwdgroup").addClass('has-error');
+                    $("#repwdmess").html("确认密码格式不正确！");
+                    return false;
+                }
+
+                if($("#repwd").val() != $("#pwd").val()){
+                    $("#repwdgroup").removeClass('has-warning');
+                    $("#repwdgroup").removeClass('has-success');
+                    $("#repwdgroup").addClass('has-error');
+                    $("#repwdmess").html("两次密码输入不一致！");
+                    return false;
+                }
+            }
+        </script>
+        <!-- <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script> -->
+    </body>
+
+</html>

@@ -1,0 +1,72 @@
+<extend name="tpl/template" />
+<block name="main">
+    <link type="text/css" href="__PUBLIC__/css/cart.css" rel="stylesheet" />
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="breadcrumbs-main">
+                <ol class="breadcrumb">
+                    <li><a href="__MODULE__/Index/index">首页</a></li>
+                    <li class="active">提交订单</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="account-top heading" style="margin-top: 20px; margin-bottom: 30px">
+        <h2>提交订单</h2>
+    </div>
+    <div class="for-liucheng">
+        <div class="liulist for-cur"></div>
+        <div class="liulist"></div>
+        <div class="liulist"></div>
+        <div class="liulist"></div>
+        <div class="liulist"></div>
+        <div class="liutextbox">
+            <div class="liutext for-cur"><em>1</em><br /><strong>提交订单</strong></div>
+            <div class="liutext"><em>2</em><br /><strong>选择支付方式</strong></div>
+            <div class="liutext"><em>3</em><br /><strong>等待发货</strong></div>
+            <div class="liutext"><em>4</em><br /><strong>已发货</strong></div>
+            <div class="liutext"><em>5</em><br /><strong>订单完成</strong></div>
+        </div>
+    </div>
+    <div id="recaddress" align="center">
+        <h3 style="text-align: left; margin-left: 120px;">收货地址</h3>
+        <table cellspacing="0" cellpadding="10" width="82%">
+            <tr>
+                <td style="width: 10px;">
+                    <input type="radio" name="recaddr" value="1" />
+                </td>
+                <td style="width: 700px;">
+                    <label>张世龙 辽宁省沈阳市沈北新区蒲昌路19号阳光经典大厦4楼兄弟连IT教育 110000 15524192580</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="cart">
+        <div id="shoplist" align="center">
+            <table cellspacing="0" cellpadding="10" width="85%">
+                <tr bgcolor="#F2F2F2" style="height: 35px;">
+                    <th style="padding-left: 10px; width: 500px;">商品名称</th>
+                    <th style="text-align:center; width: 120px;">价格(元)</th>
+                    <th style="text-align:center; width: 160px;">数量</th>
+                    <th style="text-align:center;">小计(元)</th>
+                </tr>
+                <!--此处遍历商品 -->
+                <tr class="list">
+                    <td style="padding-left: 10px;">
+                        <img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" width="45px" />
+                        <span id="title">百达翡丽Nautilus系列诞生四十周年</span>
+                        <br /><span id="attribute"><label>品牌:</lable>百达翡丽</span>
+                    </td>
+                    <td align="center">2188.00</td>
+                    <td align="center">1</td>
+                    <td id="showTotal" align="center">3999</td>
+                </tr>
+                <tr style="height: 80px;" bgcolor="#F2F2F2">
+                    <td colspan="3"></td>
+                    <td colspan="2" style="padding-left: 10px; padding-right: 10px;" align="right" valign="middle">
+                        <span id="displayTotal">总计： <label id="total">&yen; 3880.00</label></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+</block>

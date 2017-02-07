@@ -1,0 +1,207 @@
+<extend name="tpl/template" />
+<block name="main">
+	<link type="text/css" href="__PUBLIC__/css/cart.css" rel="stylesheet" />
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="__MODULE__/Index/index">首页</a></li>
+					<li class="active">我的购物车</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<div class="account-top heading" style="margin-top: 20px; margin-bottom: 30px">
+		<h2>我的购物车</h2>
+	</div>
+	<div class="cart">
+     	<div id="shoplist" align="center">
+     		<table cellspacing="0" cellpadding="10" width="85%">
+     			<tr bgcolor="#F2F2F2" style="height: 35px;">
+     				<th style="text-align:center; width: 50px;"><input type="checkbox" class="all" /></th>
+     				<th style="padding-left: 10px; width: 500px;">商品名称</th>
+     				<th style="text-align:center; width: 120px;">价格(元)</th>
+     				<th style="text-align:center; width: 160px;">数量</th>
+     				<th style="text-align:center;">小计(元)</th>
+     				<th style="text-align:center;">操作</th>
+     			</tr>
+     			<!--此处遍历商品 -->
+     			<foreach name="info" item="value">
+     			<tr class="list" pro="{$value['id']}">
+     				<td align="center"><input type="checkbox" class="chooseProduct"/></td>
+     				<td style="padding-left: 10px;">
+     					<input type="hidden" name="pid" value="{$value['pid']}" />
+						<img src="__PUBLIC__/admin/Uploads/Products/{$value['pic']}" width="45px" />
+						<span id="title">{$value['name']}</span>
+						<br /><span id="attribute"><label>品牌:</lable>{$value['bname']}</span>
+     				</td>
+     				<td align="center" class="price" proID="{$value['id']}">{$value['price']}</td>
+     				<td align="center">  
+					  	<div class="input-group spinner" proID="{$value['id']}">  
+					    	<input type="text" class="form-control" value="1" data-max="10" data-min="1" data-step="1" proID="{$value['id']}">  
+					    	<div class="input-group-btn-vertical" id="number" proID="{$value['id']}">
+					      		<button class="btn btn-default" id="plus" proID="{$value['id']}" type="button"><i class="fa fa-caret-up"></i></button>  
+					      		<button class="btn btn-default" id="reduce" proID="{$value['id']}" type="button"><i class="fa fa-caret-down"></i></button>  
+					    	</div>  
+					  	</div>  
+     				</td>
+     				<td id="showTotal" align="center" proID="{$value['id']}" class="tTotal">{$value['price']}</td>
+     				<td align="center"><a class="del" proID="{$value['id']}">删除</a></td>
+     			</tr>
+     			</foreach>
+     			<tr style="height: 80px;" bgcolor="#F2F2F2">
+     				<td align="center"><input type="checkbox" class="all"/></td>
+     				<td colspan="3"><a href="#">删除选中商品</a></td>
+     				<td colspan="2" style="padding-left: 10px; padding-right: 10px;" align="right" valign="middle">
+     					<span id="displayTotal">总计： <label id="total"></label></span>
+ 					</td>
+     			</tr>
+     		</table>
+     	</div>
+     	<div id="footer">
+			<span class="label label-default" id="backbtn">返回首页</span>
+			<span class="label label-danger" id="pay">去结算</span>
+ 		</div>
+	</div>
+	<div class="commend" align="center">
+		<div id="commend_title"><label>猜你喜欢</label></div>
+		<div class="goods">
+			<ul>
+				<li>
+					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
+					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
+					<span id="stock">库存量: 900</span>
+					<span id="add">
+						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
+					</span>
+				</li>
+				<li>
+					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
+					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
+					<span id="stock">库存量: 900</span>
+					<span id="add">
+						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
+					</span>
+				</li>
+				<li>
+					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
+					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
+					<span id="stock">库存量: 900</span>
+					<span id="add">
+						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
+					</span>
+				</li>
+				<li>
+					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
+					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
+					<span id="stock">库存量: 900</span>
+					<span id="add">
+						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
+					</span>
+				</li>
+				<li>
+					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
+					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
+					<span id="stock">库存量: 900</span>
+					<span id="add">
+						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
+					</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		(function ($) {  
+			$("#plus[proID]").on('click', function() {
+				var proNum = $(this).attr("proID");
+	    		$("input[proID ='"+proNum+"']").val(parseInt($("input[proID = '"+proNum+"']").val(), 10) + 1);
+	    		$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
+	    		$("#total").html(showTotalPrice()+".00");
+		  	});
+		  	$("#reduce[proID]").on('click', function() {
+		  		var proNum = $(this).attr("proID");
+		  		if($("input[proID ='"+proNum+"']").val() > 1){
+		    		$("input[proID ='"+proNum+"']").val( parseInt($("input[proID = '"+proNum+"']").val(), 10) - 1);
+		    		$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
+		    		$("#total").html(showTotalPrice()+".00");
+		    	}
+		  	});
+		  	$("input[proID]").blur(function() {
+		  		var proNum = $(this).attr("proID");
+		  		if(!($("input[proID = '"+proNum+"']").val()) || $("input[proID = '"+proNum+"']").val() == 0){
+		  			$("input[proID = '"+proNum+"']").val(1);
+		  			$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
+		  			$("#total").html(showTotalPrice()+".00");
+		  		}
+		  		$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
+		  		$("#total").html(showTotalPrice()+".00");
+		  	});
+		})(jQuery);
+		
+		$("#backbtn").click(function(){
+			location.href = "__MODULE__/Index";
+		});
+		
+		var flag = 0;
+		var num = 0;
+		var chooseProducts = document.getElementsByClassName("chooseProduct");
+		var all = document.getElementsByClassName("all");
+		$(".all").click(function(){
+			num = flag % 2;
+			switch(num) {
+				case 0:
+					for(var i = 0;i< all.length;i++) {
+						all[i].checked = true;
+					}
+					for(var j = 0;j < chooseProducts.length;j++){
+						chooseProducts[j].checked = true;
+					}
+					break;
+				case 1:
+					for(var i = 0;i< all.length;i++) {
+						all[i].checked = false;
+					}
+					for(var j = 0;j < chooseProducts.length;j++){
+						chooseProducts[j].checked = false;
+					}
+					break;
+			}
+			flag++;
+		});
+		
+		$("#total").html(showTotalPrice()+".00");
+		
+		function showTotalPrice(){
+			var money = 0;
+			var totalPrice = document.getElementsByClassName('tTotal');
+			for(var i = 0;i < totalPrice.length;i++) {
+				money += Number(totalPrice[i].innerHTML);
+			}
+			return money;
+		}
+
+		$(".del[proID]").click(function(){
+			var did = $(this).attr("proID");
+			$.ajax({
+				url: '__MODULE__/Cart/cartDel',
+				type: 'POST',
+				dataType: 'text',
+				data: {pid: $("input[name='pid'][proID="+did+"]").val()},
+				dataFilter: function(data) {
+					return data;
+				},
+				success: function(data) {
+					switch(data) {
+						case '1':
+							break;
+						case '0':
+							break;
+					}
+				},
+				error: function() {
+					swal("删除失败","网络开小差~ 请亲检查网络设置","error");
+				}
+			});
+		});
+	</script>
+</block>

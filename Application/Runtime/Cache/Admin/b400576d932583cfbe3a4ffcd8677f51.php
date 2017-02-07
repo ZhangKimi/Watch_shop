@@ -1,0 +1,157 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luxury Watches - 上传头像</title>
+        <link rel="shortcut icon" href="/watch_shop/Public/admin/favicon.ico">
+        <link href="/watch_shop/Public/admin/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/chosen/chosen.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/ionRangeSlider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/animate.min.css" rel="stylesheet">
+        <link href="/watch_shop/Public/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+        <script src="/watch_shop/Public/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+        <link href="/watch_shop/Public/admin/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
+
+    </head>
+
+    <body class="gray-bg">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="ibox-title  back-change">
+                    <h5><?php echo ($username); ?> 修改头像</h5>
+                </div>
+                <div class="ibox-content">
+                    <p>
+                        <!-- 上传头像 -->
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php if(($oldpic) != ""): ?><div class="image-crop">
+                                    <img src="<?php echo ($oldpic); ?>" id="photo">
+                                </div><?php endif; ?>
+                            <?php if(($oldpic) == ""): ?><div class="image-crop">
+                                    <img src="/watch_shop/Public/admin/img/default.jpg" id="photo">
+                                </div><?php endif; ?>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>图片预览：</h4>
+                            <div id="box">
+                                <div class="img-preview img-preview-sm"></div>
+                                <div class="img-preview img-preview-sv"></div>
+                                <div class="img-preview img-preview-sn"></div>
+                            </div>
+                            <h4>说明：</h4>
+                            <p>
+                                你可以选择新图片上传，然后下载裁剪后的图片
+                            </p>
+                            <div class="btn-group">
+                                <label title="上传图片" for="inputImage" class="btn btn-primary">
+                                    <input type="file" accept="image/*" name="file" id="inputImage" class="hide"> 上传图片
+                                </label>
+                                <label title="下载图片" id="download" class="btn btn-primary">保存修改</label>
+                            </div>
+                            <p></p>
+                            <!-- <h4>其他说明：</h4>
+                            <p>
+                                你可以使用<code>$({image}).cropper(options)</code>来配置插件
+                            </p> -->
+                            <div class="btn-group">
+                                <button class="btn btn-white" id="zoomIn" type="button">放大</button>
+                                <button class="btn btn-white" id="zoomOut" type="button">缩小</button>
+                                <button class="btn btn-white" id="rotateLeft" type="button">左旋转</button>
+                                <button class="btn btn-white" id="rotateRight" type="button">右旋转</button>
+                                <!-- <button class="btn btn-warning" id="setDrag" type="button">裁剪</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/watch_shop/Public/admin/js/jquery.min.js?v=2.1.4"></script>
+        <script src="/watch_shop/Public/admin/js/bootstrap.min.js?v=3.3.5"></script>
+        <script src="/watch_shop/Public/admin/js/content.min.js?v=1.0.0"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/jsKnob/jquery.knob.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/nouslider/jquery.nouislider.min.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/switchery/switchery.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="/watch_shop/Public/admin/js/plugins/cropper/cropper.min.js" type="text/javascript"></script>
+        <!-- <script src="/watch_shop/Public/admin/js/demo/form-advanced-demo.min.js"></script> -->
+
+        <script>
+          
+            var o = $(".image-crop > img");
+
+            $(o).cropper({
+                aspectRatio: 1 / 1,
+                preview: ".img-preview",
+                done: function(){}
+            });
+
+            var r = $("#inputImage");
+
+            window.FileReader?r.change(function(){
+                var e, i = new FileReader, t = this.files;
+                var reg = /^image\/\w+$/;
+                t.length&&(e = t[0], reg.test(e.type) ? (i.readAsDataURL(e), i.onload = function(){
+                    r.val(""),
+                    o.cropper("replace", this.result);
+                }) : showMessage("请选择图片文件"));
+            }) : r.addClass("hide"),
+
+            $("#download").click(function(){
+                var imgurl = o.cropper("getDataURL");
+                $.ajax({
+                    url: "/watch_shop/index.php/Admin/Uploaduserpic/format64",
+                    type: "POST",
+                    dataType: "text",
+                    data: {imgurl: imgurl, page: "/watch_shop/Public"},
+                    dataFilter: function(data){
+                        return data;
+                    },
+                    success: function(data){
+                        switch(data){
+                            case "1":
+                                swal("修改成功","图片已经上传至服务器。","success");
+                                $(window.parent.document).find("img[class='img-circle']").attr("src",imgurl);
+                                break;
+                            case "0":
+                                swal("修改失败","网络不给力 , 请刷新后重试。","error");
+                                break;
+                        }
+                    },
+                    error:function(){
+                        swal("网络不给力！","网络不给力 , 请检查网络设置。","error");
+                    }
+                });
+            }),$("#zoomIn").click(function(){
+                o.cropper("zoom", .1);
+            }),$("#zoomOut").click(function(){
+                o.cropper("zoom", -.1);
+            }),$("#rotateLeft").click(function(){
+                o.cropper("rotate", 90);
+            }),$("#rotateRight").click(function(){
+                o.cropper("rotate", -90);
+            }),$("#setDrag").click(function(){
+                o.cropper("setDragMode","crop")
+            });
+        </script>
+    </body>
+</html>
