@@ -18,8 +18,9 @@
 				$res = $db -> where("`pid` = '{$id}'") -> find();
 				$this -> assign("tname", $res['name']);
 				
-				$res = $db -> where("`parid` = '{$id}'") -> find();
-				$this -> assign("dname", $res['name']);
+				$res = $db -> where("`parid` = '{$id}'") -> select();
+				foreach($res as $row);
+				$this -> assign("dname", $row['name']);
 				
 				$this -> display("index");
             }
@@ -28,7 +29,7 @@
 				$id = $_GET['pid'];
 				$db = M('type');
 				$res = $db -> where("`pid` = '{$id}'") -> find();
-				$this -> assign("",$res['name']);
+				$this -> assign("dname",$res['name']);
 				$this -> display("index1");
             }
         }
