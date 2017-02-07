@@ -19,17 +19,19 @@
 				$this -> assign("tname", $res['name']);
 				
 				$res = $db -> where("`parid` = '{$id}'") -> select();
-				foreach($res as $row);
-				$this -> assign("dname", $row['name']);
-				
+				$this -> assign("type", $res);
 				$this -> display("index");
             }
             // 第二种情况 用户点击子类导航 显示子类模板
             if(isset($_GET['pid'])) {
 				$id = $_GET['pid'];
+                $parid = $_GET['parid'];
 				$db = M('type');
 				$res = $db -> where("`pid` = '{$id}'") -> find();
+                $result = $db -> where("`pid` = '{$parid}'") -> find();
 				$this -> assign("dname",$res['name']);
+                $this -> assign("pname", $result['name']);
+                $this -> assign("parid", $parid);
 				$this -> display("index1");
             }
         }

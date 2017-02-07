@@ -155,7 +155,7 @@
 														<foreach name="val" item="res">
 															<if condition="($res['parid'] eq $value['pid'])">
 																<li>
-																	<a href="__MODULE__/List?pid={$res['pid']}">{$res['name']}</a>
+																	<a href="__MODULE__/List?pid={$res['pid']}&parid={$res['parid']}">{$res['name']}</a>
 																</li>
 															</if>
 														</foreach>
