@@ -28,9 +28,45 @@
 			$this -> assign("id", $id);
 			$this -> assign("username", $result['username']);
 			$this -> assign("sex", $result['sex']);
+			$this -> assign("realname", $result['realname']);
+			$this -> assign("birthday", $result['birthday']);
 			$this -> assign("mobile", $result['mobile']);
 			$this -> assign("email", $result['email']);
 			$this -> assign("stat", $result['stat']);
 			$this -> display("edit");
+    	}
+
+    	public function doedit() {
+    		// 要更改用户的id
+    		$id = $_POST['uid'];
+
+    		// 用变量数组data接需要更新user表的值
+    		$data['stat'] = $_POST['stat'];
+
+			// 用变量数组info接需要更新user_details表的值
+    		$info['sex'] = $_POST['sex'];
+    		$info['realname'] = $_POST['realname'];
+    		$date = explode("/", $_POST['birthday']);
+    		$year = $date[0];
+    		$month = $date[1];
+    		$day = $date[2];
+    		$birthday = strtotime($day."-".$month."-".$year);
+    		$info['birthday'] = $birthday;
+    		$info['mobile'] = $_POST['mobile'];
+    		$info['email'] = $_POST['email'];
+
+    		// 更新user表
+    		$db = M('user');
+    		$result = $db -> where("`uid` = '{$id}'") -> save($data);
+
+    		// 更新user_details表
+    		$mod = M('user_details');
+    		$res = $mod -> where("`uid` = '{$id}'") -> save($info);
+
+    		if($result || $res) {
+    			die("1");
+    		}else {
+    			die("0");
+    		}
     	}
 	}
