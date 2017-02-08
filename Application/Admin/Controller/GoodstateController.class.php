@@ -30,35 +30,31 @@
      * E - mail: yangsen5464@163.com
      ******************************************************/
     public function modify() {
-        if(!$_POST) {
-            // 网络连接失败 因为POST没有成功传值 直接失败
-            $this -> error("{$str}失败 , 网络不给力请检查网络设置",__MODULE__."/Goodstate");
+        
+        // 接收到POST传值
+        $data['pid'] = $_POST['pid'];
+        $data['offsale'] = $_POST['offsale'];
+        // 实例化Model对象 商品详情表
+        $db = M('products_details');
+        // 执行更新操作
+        $result = $db ->where("`pid` = '{$data['pid']}'") -> save($data);
+        // 组织提示语句
+        $str = "";
+        switch($data['offsale']) {
+            case "1":
+                $str = "up";
+                break;
+            case "0":
+                $str = "down";
+                break;
+        }
+        // 判断是否更新成功
+        if($result) {
+            // 操作成功
+            die($str);
         }else {
-            // 接收到POST传值
-            $data['pid'] = $_POST['pid'];
-            $data['offsale'] = $_POST['offsale'];
-            // 实例化Model对象 商品详情表
-            $db = M('products_details');
-            // 执行更新操作
-            $result = $db ->where("`pid` = '{$data['pid']}'") -> save($data);
-            // 组织提示语句
-            $str = "";
-            switch($data['offsale']) {
-                case "1":
-                    $str = "上架";
-                    break;
-                case "0":
-                    $str = "下架";
-                    break;
-            }
-            // 判断是否更新成功
-            if($result) {
-                // 操作成功
-                $this -> success("{$str}成功",__MODULE__."/Goodstate");
-            }else {
-                // 更新失败 数据库执行更新失败
-                // $this -> error("{$str}失败 , 服务器繁忙请稍后再试",__MODULE__."/Goodstate");
-            }
+            // 更新失败 数据库执行更新失败
+            die("0");
         }
     }
 }
