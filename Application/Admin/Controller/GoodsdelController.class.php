@@ -28,15 +28,17 @@
 		
 		
 		public function del()
-    	{
-    	$mod =  M('products_details'); 
+   	{
+   	    $id=$_POST['id'];
+     	$mod =  M('products_details'); 
         $mod -> join('product ON products_details.pid = product.pid')->select();
-    	if($mod->delete($_GET['id']))
-    	{
-    		$this->success("删除成功", "index");
+    	if($mod->delete($id))
+     	{
+     		die('1');
     	}else
     	{
-    		$this->error("删除失败", "index");
+    		die('0');
     	}
-    }
+     }
+       
 }
