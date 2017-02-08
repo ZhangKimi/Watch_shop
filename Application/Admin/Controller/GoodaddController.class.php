@@ -21,7 +21,7 @@
                 //判断列表项是否是根类别
                 //如果当前数据的pid为0，代表根类别，把disabled赋过去
                 $disabled = ($row['parid'] == 0)?"disabled":"";
-                $str .= "<option {$disabled} value='{$row['id']}'>";
+                $str .= "<option {$disabled} value='{$row['pid']}'>";
                 $str .= "{$nbsp}|--{$row['name']}";
                 $str .= "</option>";  
             }
@@ -62,16 +62,16 @@
             $data['title'] = $_POST['title'];
             $data['stock'] = $_POST['stock'];
             $data['addtime'] = time();
-            $data['inputer'] = $_POST['inputer'];
+            $data['inputer'] = $_SESSION['admin']['username'];
             $data['price'] = $_POST['price'];
             $data['preprice'] = $_POST['preprice'];
             $db = M('product');
             $result = $db -> add($data);
-
             // 判断是否添加成功
             if($result) {
+                $pid = $result;
                 // 添加成功 添加记录商品详情表
-                $inf['pid'] = $result;
+                $inf['pid'] = $pid;
                 $inf['typeid'] = $_POST['typeid'];
                 $inf['brandid'] = $_POST['brandid'];
                 $inf['hot'] = $_POST['hot'];
@@ -99,10 +99,8 @@
 
             }else {
                 // 添加失败
+                $this -> error("添加失败");
             }
-
-
-
         }
 
         public function upload() {

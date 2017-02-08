@@ -81,13 +81,6 @@
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                <label class="col-sm-2 control-label">商品入库人</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" name='inputer' />
-                                    </div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-                                <div class="form-group">
                                     <label class="col-sm-2 control-label">是否热卖</label>
                                     <div class="col-sm-10">
                                             <div class="radio i-checks">
@@ -165,38 +158,37 @@
                                 </div>
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                <label class="col-sm-2 control-label">商品详情图</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" multiple class="input-large form-control" name='picurls[]'>
-                                    </div>
-                                </div>
-                                <div class="hr-line-dashed"></div>
-                                <div class="form-group">
                                     <div class="col-sm-4 col-sm-offset-2">
                                         <button class="btn btn-primary" id="submit">保存内容</button>
                                         <button class="btn btn-white" id="back">返回</button>
                                     </div>
                                 </div>
                             </form>
-               
-
-        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="__PUBLIC__/admin/js/jquery.min.js?v=2.1.4"></script> 
         <script src="__PUBLIC__/admin/js/bootstrap.min.js?v=3.3.5"></script> 
         <script src="__PUBLIC__/admin/js/content.min.js?v=1.0.0"></script>
         <script src="__PUBLIC__/admin/js/plugins/iCheck/icheck.min.js"></script>
         <script>
-            $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+            $(document).ready(function(){
+                $(".i-checks").iCheck({
+                    checkboxClass:"icheckbox_square-green",
+                    radioClass:"iradio_square-green",
+                });
+            });
             $(function(){
                 $("select[name=typeid]").change(function() {
                     $("#defa").remove();
                 });
+
                 $("select[name=brandid]").change(function() {
                     $("#dis").remove();
                 });
             });
         </script>
-        <!-- <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script> -->
     </body>
-
 </html>
