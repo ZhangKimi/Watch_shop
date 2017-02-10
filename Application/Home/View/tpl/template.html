@@ -78,7 +78,7 @@
 								var username = "<?php echo $_SESSION['user']['username'] ?>";
 
 								if(status == "1") {
-									$("#banner").html("<a href='__MODULE__/Center'>"+username+"</a> &nbsp;<a href='__MODULE__/Login/dologout'>注&nbsp;&nbsp;销</a>");
+									$("#banner").html("<a href='__MODULE__/Center' target='_blank'>"+username+"</a> &nbsp;<a href='__MODULE__/Login/dologout'>注&nbsp;&nbsp;销</a>");
 								}else {
 									$("#banner").html("<a href='__MODULE__/Login'>登&nbsp;&nbsp;录</a> &nbsp; <a href='__MODULE__/Register'>注&nbsp;&nbsp;册</a>");
 								}
