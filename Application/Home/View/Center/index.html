@@ -45,19 +45,23 @@
 										去首页看看购物吧</p>
 									 </div>
 								
-									<div style="background-color: #fff;margin-top: 10px;height: 300px;padding: 10px;">
+									<div style="background-color: #fff;margin-top: 10px;height: 280px;padding: 7px;">
 										<p style="font-size: 16px;text-align: left;">购物车</p>
-										
+										<foreach name='res' item='va'>
 										<div style="float:left ;">
-										<img src="img/个人中心/屏幕快照-2016-04-08-15.50.46.png" style="margin-top: 10px;height: 100px;width: 100px;float: left;"/>	
-										<br />
-										<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">￥156</span>
-										<del style="float: left;margin-left: 20px;">￥189</del>
-										<p style="width: 100px;font-size: 12px;color: #686868">化妆水化妆水化妆水化妆水化妆水化妆水</p>
+											<a href="__MODULE__/Details/index?id={$va['pid']}" class="mask">
+												<img src="__PUBLIC__/admin/Uploads/Products/{$va['picurl']}" style="margin-top: 10px;height: 120px;width: 110px;float: left;"/>	
+												<br />
+
+												<span style="display: block;float: center;margin-left: 10px;color: #f78642;font-size: 16px;">¥ {$va['price']}</span>
+
+												<div style="float: center;height: 20px;margin-left: 10px;">库存量{$va['stock']}</div>
+
+												<p style="margin-left:10px;width: 100px;font-size: 12px;color: #686868">{$va['title']}</p>
+											</a>
 										</div>
-										
-									   <p style="margin-top: 30px;font-size: 14px;color: #686868;">查看购物车(<font color="red">96</font>)</p>
-									   
+										</foreach>
+									    <a href="__MODULE__/Cart" style="margin-left:10px">查看购物车(<font color="red">{$num}</font>)</a>
 									</div>
 							
 								</div>
