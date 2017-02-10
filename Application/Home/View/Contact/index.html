@@ -20,33 +20,79 @@
 	        </div>
             <div class="contact-text">
 	            <div class="col-md-3 contact-left">
-	                    <div class="address">
-	                        <h5>联系我们</h5>
-	                        <p>公司名称:  
-	                            <span>沈阳兄弟连教育咨询有限公司</span>
-	                        </p>
-	                    </div>
-	                    <div class="address">
-	                        <h5>公司地址</h5>
-	                        <p>辽宁省沈阳市沈北新区蒲昌路19号阳光经典大厦4楼兄弟连<br />
-	                        <span>Tel: +86 155 2419 2580</span>
-	                        Email: <a href="mailto:admin@hlts.pub">admin@hlts.pub</a></p>
-	                    </div>
-	                </div>
-	                <div class="col-md-9 contact-right">
-	                    <form>
-	                        <input type="text" placeholder="姓名" name="name">
-	                        <input type="text" placeholder="手机号码" name="mobile">
-	                        <input type="text"  placeholder="电子邮箱" name="email">
-	                        <textarea placeholder="您想对我们说..." required=""></textarea>
-	                        <div class="submit-btn">
-	                            <input type="submit" value="提  交">
-	                        </div>
-	                    </form>
-	                </div>	
-	                <div class="clearfix"></div>
-	            </div>
+                    <div class="address">
+                        <h5>联系我们</h5>
+                        <p>公司名称:  
+                            <span>沈阳兄弟连教育咨询有限公司</span>
+                        </p>
+                    </div>
+                    <div class="address">
+                        <h5>公司地址</h5>
+                        <p>辽宁省沈阳市沈北新区蒲昌路19号阳光经典大厦4楼兄弟连<br />
+                        <span>Tel: +86 155 2419 2580</span>
+                        Email: <a href="mailto:admin@hlts.pub">admin@hlts.pub</a></p>
+                    </div>
+                </div>
+                <div class="col-md-9 contact-right">
+                    <input type="text" placeholder="姓名" required="" name="cname">
+                    <input type="text" placeholder="手机号码" required="" name="mobile">
+                    <input type="text"  placeholder="电子邮箱" required="" name="email">
+                    <textarea placeholder="您想对我们说..." required="" name="contents"></textarea>
+                    <div class="submit-btn">
+                        <input type="submit" value="提  交" id="submit" />
+                    </div>
+                </div>	
+                <div class="clearfix"></div>
+            </div>
 	    </div>
 	</div>
 	<!--contact-end-->
+	<script>
+		$("#submit").click(function(){
+			$.ajax({
+				url: '__MODULE__/Contact/add',
+				type: 'POST',
+				dataType: 'text',
+				data: {
+					cname: $("input[name='cname']").val(),
+					mobile: $("input[name='mobile']").val(),
+					email: $("input[name='email']").val(),
+					contents: $("textarea[name='contents']").val()
+				},
+				dataFilter: function(data) {
+					return data;
+				},
+				success: function(data) {
+					switch(data) {
+						case '1':
+							swal({
+	                            title: "您的意见/建议已经成功提交",
+	                            text: "我们的工作人员会仔细阅读您的反馈",
+	                            type: "success",
+	                            showConfirmButton: true,
+	                            confirmButtonText: "我知道了"
+	                        });
+							break;
+						case '2':
+							swal({
+	                            title: "服务器繁忙请稍后再试",
+	                            text: "Woops ..貌似网络开小差了",
+	                            type: "error",
+	                            showConfirmButton: true,
+	                            confirmButtonText: "我知道了"
+	                        });
+							break;
+					}
+				},
+				error: function(){
+					swal({
+                        title: "网络连接失败",
+                        text: "Woops ..请检查网络连接",
+                        type: "error",
+                        showConfirmButton: false
+                    });
+				}
+			});
+		});
+	</script>
 </block>

@@ -65,61 +65,32 @@
     <div id="box">
 	    <div class="plist">
 			<div class="product-one">
+				<if condition="$pinfo eq $value.pid">
+				<foreach name="$info" item="res">
+					{$res.title}
+				</foreach>
+			</if>
+			<foreach name="res" item="value"> 
 				<div class="col-md-3 product-left">
 					<div class="product-main simpleCart_shelfItem">
-						<a href="__MODULE__/Details" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-5.png" alt="" /></a>
+						<a href="__MODULE__/Details" class="mask"><img class="img-responsive zoom-img" src="___PUBLIC__/admin/Uploads/Products/{$value['picurl']}" alt="" /></a>
 						<div class="product-bottom">
-							<h3>Smart Watches</h3>
-							<p>Explore Now</p>
-							<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+							<h3>{$value['title']}</h3>
+							<p>库存量 {$value['stock']}</p>
+							<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">
+							¥ {$value['price']}</span></h4>
 						</div>
 						<div class="srch">
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 product-left">
-					<div class="product-main simpleCart_shelfItem">
-						<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-6.png" alt="" /></a>
-						<div class="product-bottom">
-							<h3>Smart Watches</h3>
-							<p>Explore Now</p>
-							<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-						</div>
-						<div class="srch">
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-left">
-					<div class="product-main simpleCart_shelfItem">
-						<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-7.png" alt="" /></a>
-						<div class="product-bottom">
-							<h3>Smart Watches</h3>
-							<p>Explore Now</p>
-							<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-						</div>
-						<div class="srch">
-							<span>-50%</span>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-left">
-					<div class="product-main simpleCart_shelfItem">
-						<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-8.png" alt="" /></a>
-						<div class="product-bottom">
-							<h3>Smart Watches</h3>
-							<p>Explore Now</p>
-							<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-						</div>
-						<div class="srch">
-							<span>-50%</span>
-						</div>
-					</div>
-				</div>
+				</foreach>
+				</foreach>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
 </block>	
 
-</block>
+
 	<!--footer-end-->	

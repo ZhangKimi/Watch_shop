@@ -63,52 +63,26 @@
 			<span class="label label-danger" id="pay">去结算</span>
  		</div>
 	</div>
+	
 	<div class="commend" align="center">
 		<div id="commend_title"><label>猜你喜欢</label></div>
-		<div class="goods">
-			<ul>
-				<li>
-					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
-					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
-					<span id="stock">库存量: 900</span>
-					<span id="add">
-						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
-					</span>
-				</li>
-				<li>
-					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
-					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
-					<span id="stock">库存量: 900</span>
-					<span id="add">
-						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
-					</span>
-				</li>
-				<li>
-					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
-					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
-					<span id="stock">库存量: 900</span>
-					<span id="add">
-						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
-					</span>
-				</li>
-				<li>
-					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
-					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
-					<span id="stock">库存量: 900</span>
-					<span id="add">
-						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
-					</span>
-				</li>
-				<li>
-					<img src="__PUBLIC__/admin/Uploads/Products/587eea261808c.jpg" id="goods_img" />
-					<span id="proName"><label>Calvin Klein 花裤衩 ^_-</label></span>
-					<span id="stock">库存量: 900</span>
-					<span id="add">
-						<img src="__PUBLIC__/images/cart-2.png" /><label>&yen; 2899.00</label>
-					</span>
-				</li>
-			</ul>
+		
+		<div class="goods" overflow='20px'>
+		<foreach name="info1" item="value">
+			<ul style='float:left'>
+				<li >
+					<a href="__MODULE__/Details/index?id={$value['pid']}" class="mask">
+					<img class="img-responsive zoom-img" src="__PUBLIC__/admin/Uploads/Products/{$value['picurl']}" id="pic" pro="{$value['pid']}" pic="{$value['picurl']}" width="150px" />
+					<input type="hidden" id='pid' pro="{$value['pid']}" value="{$value['pid']}">
+					<h4 id="title" pro="{$value['pid']}" pro="{$value['pid']}">{$value['title']}</h4>
+					<span>品牌: <label id="brand" pro="{$value['pid']}" bid="{$value['brandid']}">{$value['bname']}</label></span>
+					<p>库存量 :{$value['stock']}</p>
+					</a>
+			    </li>		
+		    </ul>
+		</foreach>
 		</div>
+		
 	</div>
 	<script>
 		(function ($) {  

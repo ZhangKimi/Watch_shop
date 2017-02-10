@@ -93,9 +93,15 @@
 							<div class="product-main simpleCart_shelfItem">
 								<a href="__MODULE__/Details/index?id={$value['pid']}" class="mask">
 									<img class="img-responsive zoom-img" src="__PUBLIC__/admin/Uploads/Products/{$value['picurl']}" id="pic" pro="{$value['pid']}" pic="{$value['picurl']}" width="800px" />
-								
-									<div class="product-bottom">
+									<div class="product-bottom" overflow='200px'>
 										<input type="hidden" id='pid' pro="{$value['pid']}" value="{$value['pid']}">
+										<div class="srch">
+												<span><eq name = 'value.hot' value='1'>
+                                            			<td>热卖</td></eq>
+                                  					  <eq name = 'value.commend' value='1'>
+                                  						<td>推荐</td></eq>
+                             					</span>
+										</div>
 										<h3 id="title" pro="{$value['pid']}" pro="{$value['pid']}">{$value['title']}</h3>
 										<span>品牌: <label id="brand" pro="{$value['pid']}" bid="{$value['brandid']}">{$value['bname']}</label></span>
 										<p>库存量 : <span id="stock" pro="{$value['pid']}">{$value['stock']}</span></p>
@@ -105,14 +111,14 @@
 								<eq name="flag" value="allow">
 									<h4>
 										<a class="addone" pro="{$value['pid']}"><i></i></a> 
-										<span pro="{$value['pid']}" price="{$value['price']}" id="price">&yen; {$value['price']}</span>
+										<span pro="{$value['pid']}" price="{$value['price']}" id="price">¥ {$value['price']}</span>
 									</h4>
 								</eq>
 								<!-- 用户没有登录  -->
 								<eq name="flag" value="deny">
 									<h4>
 										<a class="addone" flag="{$flag}"><i></i></a>
-										<span class=" item_price">&yen; {$value['price']}</span>
+										<span class=" item_price">¥ {$value['price']}</span>
 									</h4>
 								</eq>
 							</div>
@@ -198,59 +204,7 @@
 					</script>
 					<div class="clearfix"></div>
 				</div>
-				<div class="product-one">
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="__MODULE__/Details" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-5.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-6.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-7.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 product-left">
-						<div class="product-main simpleCart_shelfItem">
-							<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="__PUBLIC__/images/p-8.png" alt="" /></a>
-							<div class="product-bottom">
-								<h3>Smart Watches</h3>
-								<p>Explore Now</p>
-								<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-							</div>
-							<div class="srch">
-								<span>-50%</span>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-				</div>					
+				
 			</div>
 		</div>
 	</div>
