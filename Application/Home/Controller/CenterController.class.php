@@ -3,6 +3,9 @@
 	use Think\Controller;
 	class CenterController extends Controller {
 		public function index(){
+            if(!$_SESSION['user']) {
+                $this -> error("请您先登录", __MODULE__."/Login", 3);
+            }
 		    // 显示用户购物车购物数量
 		    $this -> assign("shopNum", shopCartNum($_SESSION['user']['uid']));
 		    // 显示导航栏
