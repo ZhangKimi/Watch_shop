@@ -8,6 +8,7 @@
         <link href="__PUBLIC__/admin/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
         <link href="__PUBLIC__/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
         <!-- Data Tables -->
+         <link href="__PUBLIC__/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
         <link href="__PUBLIC__/admin/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
         <link href="__PUBLIC__/admin/css/animate.min.css" rel="stylesheet">
         <link href="__PUBLIC__/admin/css/style.min.css?v=4.0.0" rel="stylesheet"><base target="_blank">
@@ -28,8 +29,8 @@
                                         <th>商品名称</th>
                                         <th>商品图片</th>
                                         <th>库存数量</th>
-                                        <th>入库人</th>
                                         <th>添加时间</th>
+                                        <th>入库人</th>
                                         <th>售价</th>
                                         <th>操作</th>
                                     </tr>
@@ -37,7 +38,7 @@
                                 <tbody>
                                     
                                     <foreach name="info" item="value"> 
-                                    	<tr class="gradeX">
+                                    	<tr class="gradeX" id="del{$value.id}">
 	                                        <td>{$value.pid}</td>
 	                                        <td>{$value.title}</td>
 	                                        <td><img src="__PUBLIC__/admin/Uploads/Products/{$value.picurl}" width='50' style='border:1px #eee solid'/></td>
@@ -47,7 +48,8 @@
 	                                        <td class="center">{$value.inputer}</td>
 	                                        <td class="center">{$value.price}</td>
                                             <td>
-                                    <a href="__MODULE__/Goodsdel/del?id={$value['id']}">删除</a>
+                                    <!-- <a href="__MODULE__/Goodsdel/del?id={$value['id']}">删除</a> -->
+                                    <a href="#" tpl="{$value.id}" onclick="return false;" title="删除" target="_self">删除</a>
                                         </td>
                                     	</tr>
                                 	</foreach>
@@ -63,8 +65,53 @@
         <script src="__PUBLIC__/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
         <script src="__PUBLIC__/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script src="__PUBLIC__/admin/js/content.min.js?v=1.0.0"></script>
+        <script src="__PUBLIC__/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
         <script>
             $(document).ready(function(){$(".dataTables-example").dataTable();var oTable=$("#editable").dataTable();oTable.$("td").editable("../example_ajax.php",{"callback":function(sValue,y){var aPos=oTable.fnGetPosition(this);oTable.fnUpdate(sValue,aPos[0],aPos[1])},"submitdata":function(value,settings){return{"row_id":this.parentNode.getAttribute("id"),"column":oTable.fnGetPosition(this)[2]}},"width":"90%","height":"100%"})});function fnClickAddRow(){$("#editable").dataTable().fnAddData(["Custom row","New row","New row","New row","New row"])};
+            
+            $("a[tpl]").click(function () {
+                var id = $(this).attr("tpl");
+                swal({
+                    title:"您确定要删除该商品吗",
+                    text:"删除后将无法恢复，请谨慎操作！",
+                    type:"warning",
+                    showCancelButton:true,
+                    confirmButtonColor:"#DD6B55",
+                    confirmButtonText:"是的，我要删除！",
+                    cancelButtonText:"让我再考虑一下…",
+                    closeOnConfirm:false,
+                    closeOnCancel:false
+                },function(isConfirm){
+                    if(isConfirm){
+                        // swal(id,"success");
+                        $.ajax({
+                            url: "__MODULE__/Goodsdel/del",
+                            type: 'POST',
+                            dataType: 'text',
+                            data: {id: id},
+                            dataFilter:function(data){
+                                return data;
+                            },
+                            success:function(data){
+                                switch(data) {
+                                    case "1":
+                                        swal("删除成功！","您已经永久删除了这个商品。","success");
+                                        $("#del"+id).remove();
+                                        break;
+                                    case "0":
+                                        swal("删除失败！","请刷新后重试。","error");
+                                        break;
+                                }
+                            },
+                            error:function(){
+                                swal("网络不给力！","网络不给力 , 请检查网络设置。","error");
+                            }
+                        });
+                    }else{
+                        swal("已取消","您取消了删除操作！","error");
+                    }
+                })
+            });
         </script>
         <!-- <script type="text/javascript" src="__PUBLIC__/admin/js/stats.js" charset="UTF-8"></script> -->
     </body>

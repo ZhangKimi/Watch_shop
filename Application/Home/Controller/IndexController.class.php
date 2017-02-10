@@ -10,6 +10,8 @@
                         -> join('brand ON products_details.brandid = brand.id')
                         // 查询前8条数据
                         -> limit(0,8)
+                        //查询条件上架商品
+                        -> where("products_details.`offsale` = '1'")
                         // 执行查询
                         -> select();
             // 将商品信息发送至前台

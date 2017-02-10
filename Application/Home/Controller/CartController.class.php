@@ -17,7 +17,13 @@
           	for($j = 0; $j < count($info);$j++) {
                 $info[$j]['id'] = $j + 1;
           	}
+          	$mod = M("products_details");
+            $info1 = $mod -> join('product ON products_details.pid = product.pid')
+                        -> join('brand ON products_details.brandid = brand.id')
+                        -> limit(0,5)
+                        -> select();
           	$this -> assign("info", $info);
+          	$this -> assign("info1", $info1);
           	$this -> display("index");
 	    }
         
