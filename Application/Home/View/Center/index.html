@@ -1,7 +1,7 @@
 <extend name="tpl/Center" />
 <block name="main">
 
-<div class="cont-main">
+	<div class="cont-main">
 		<div class="main-wrap mt15" style="border: 0px;">
 				<div class="server-wrapper">
 					<div class="server-tab" style="margin-top: 26px;">
@@ -9,11 +9,11 @@
 							<div style="width: 680px;padding: 10px;float: left;background-color: #fff;height: 150px;">
 
 								<div style="width:670px ;height: 80px;border: 1px #ccc solid;box-shadow: 1px 1px 1px #F5F5F5;padding: 5px;">
-									<div style="width: 100%;height: 100%;border: 1px #F2873B dashed;">
-										<span style="font-size:30px;color: #F88600;display: block;    display: block; width: 250px; margin-left: 1px;margin-top: 28;">admin 欢迎回来</span> 
+									<div style="width: 100%;height: 100%;border: 1px #F2873B dashed; text-align: left;">
+										<span style="font-size:30px;color: #F88600;display: block;    display: block; width: 500px; margin-top: 28;margin-left: 30px;">{$Think.session.user.username} 欢迎回来</span> 
 									</div>
 								</div>
-<!-- 										<h1 style="float: left;display: block; width: 300px;">admin 欢迎回来</h1> -->
+
 									<div style="border-top:1px #ccc solid;width: 650px;position: absolute;margin-top: 10px;margin-left: 20px;float: left;"></div>
 									<div style="position: absolute;margin-top: 30px;font-size: 14px;color: #686868;float: left;">
 										<span style="margin-left: 20px;">待付款</span>
@@ -40,7 +40,7 @@
 
 									<div style="background-color: #fff;margin-top: 10px;height: 200px;padding: 10px;">
 										<p style="font-size: 20px;text-align: left;">收藏的商品</p>
-										<img src="__PUBLIC__/images/zuo/heart.png" style="margin-top: 20px;"/>
+										<img src="__PUBLIC__/images/collect.png" style="margin-top: 20px;"/>
 										<p style="margin-top: 30px;font-size: 14px;color: #686868;">您的收藏空空的，赶紧<br/>
 										去首页看看购物吧</p>
 									 </div>

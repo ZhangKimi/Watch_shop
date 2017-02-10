@@ -4,50 +4,55 @@
 		<title></title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<link rel="stylesheet" href="__PUBLIC__/css/css.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/center.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/ms-style.min.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/personal_member.min.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/Snaddress.min.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/sui.css" />
-
-		<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
-		<script type="text/javascript" src="js/sui.js" ></script>
+		<script type="text/javascript" src="__PUBLIC__/js/sui.js" ></script>
+		<link href="__PUBLIC__/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<script src="__PUBLIC__/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
 		<style>
-		body {
-		    background: #f5f5f5;
-		}
+			body {
+			    background: #f5f5f5;
+			}
+
 			.sui-table th{
-		    padding: 16px 8px;
-		    line-height: 18px;
-		    text-align: center;
-		    vertical-align: middle;
-		    border-top: 1px solid #e6e6e6;
-		    font-weight: normal;
-		    font-size: 14px;
-		    color: #333333;
-		   }
-		   .sui-table td {
-		    padding: 16px 8px;
-		    line-height: 18px;
-		    text-align: center;
-		    vertical-align: middle;
-		    border-top: 1px solid #e6e6e6;
-		    font-weight: normal;
-		    font-size: 12px;
-		    color: #333333;
-		   }
-	img {
-	    max-width: 100%;
-	    height: auto;
-	    /*vertical-align: bottom;*/
-	    border: 0;
-	    -ms-interpolation-mode: bicubic;
-	    margin-left: -10px;
-	}
-a{
-	color: #000000;
-}
+			    padding: 16px 8px;
+			    line-height: 18px;
+			    text-align: center;
+			    vertical-align: middle;
+			    border-top: 1px solid #e6e6e6;
+			    font-weight: normal;
+			    font-size: 14px;
+			    color: #333333;
+		    }
+
+		    .sui-table td {
+			    padding: 16px 8px;
+			    line-height: 18px;
+			    text-align: center;
+			    vertical-align: middle;
+			    border-top: 1px solid #e6e6e6;
+			    font-weight: normal;
+			    font-size: 12px;
+			    color: #333333;
+		    }
+
+		    img {
+		    	max-width: 100%;
+			    height: auto;
+			    /*vertical-align: bottom;*/
+			    border: 0;
+			    -ms-interpolation-mode: bicubic;
+			    /*margin-left: -10px;*/
+			}
+
+		    a{
+				color: #000000;
+		    }
 		</style>
 	</head>
 
@@ -56,15 +61,15 @@ a{
 		<div class="ng-toolbar">
 			<div class="ng-toolbar-con wrapper">
 				<div class="ng-toolbar-left">
-					<a class="ng-bar-node ng-bar-node-backhome" id="ng-bar-node-backhome" style="display: block;">
-						<span>网站名</span>
+					<a class="ng-bar-node ng-bar-node-backhome" id="ng-bar-node-backhome" style="display: block;" href="__MODULE__/Index">
+						<span>Luxury Watches</span>
 					</a>
 				</div>
 				</div>
 				<div class="ng-toolbar-right">
 
 					<div class="ng-bar-node-box mysuning-handle">
-						<a href=".html" rel="nofollow" name="" class="ng-bar-node ng-bar-node-fix touch-href ng-bar-node-pr5">
+						<a href="__MODULE__/Cart" rel="nofollow" name="" class="ng-bar-node ng-bar-node-fix touch-href ng-bar-node-pr5">
 						<span>购物车</span>
 						</a>
 					</div>
@@ -75,12 +80,10 @@ a{
 						</a>
 					</div>
 
-					<div class="ng-bar-node-box service-handle">
-						<a href="" class="ng-bar-node ng-bar-node-service ng-bar-node-fix touch-href ng-bar-node-pr5" rel="nofollow">
+					<div class="ng-bar-node-box mysuning-handle">
+						<a href="__MODULE__/Contact" rel="nofollow" name="" class="ng-bar-node ng-bar-node-fix touch-href ng-bar-node-pr5">
 						<span>联系我们</span>
 						</a>
-						<div class="ng-down-box ng-d-box service-center-child ng-ser-list" style="display:none;">
-						</div>
 					</div>
 				</div>
 				<div id="ng-minicart-slide-box"></div>
@@ -137,18 +140,12 @@ a{
 					<nav class="ms-nav">
 						<ul>
 							<li class="">
-								<a href="" data-url=""  style=" padding-bottom: 17px;border-bottom: 3px #fff solid;">首页</a>
+								<a href="__MODULE__/Center" data-url=""  style=" padding-bottom: 17px;border-bottom: 3px #fff solid;">首页</a>
 							<i class="nav-arrow"></i></li>
 							<li class="nav-manage selected">
 								<a href="" data-url="">账户管理<em hidden></em></a><i class="nav-arrow" hidden></i>
 							</li>
 						</ul>
-						<div class="ms-search">
-							<form>
-								<input id="" type="text" value="">
-								<img src="__PUBLIC__/images/zuo/search.png"  style="height: 10px;width: 10px;float: right;margin-right: 10px;" />
-							</form>
-						</div>
 					</nav>
 				</div>
 
@@ -158,26 +155,33 @@ a{
 				<div class="header-useinfo" id="">
 					<div class="ms-avatar">
 						<div class="useinfo-avatar">
-							<img src="img/头像.png">
+							<eq name="Think.session.user.headpic" value="">
+								<img src="__PUBLIC__/images/default.jpg">
+							</eq>
+							<neq name="Think.session.user.headpic" value="">
+								<img src="{$Think.session.user.headpic}">
+							</eq>
 							<div class="edit-avatar"></div>
 							
 						</div>
-						<a>sunshine</a>
+						<a>{$Think.session.user.username}</a>
 					</div>
 
 					<div class="ms-name-info">
 
 						<div class="info-member">
-						 <a target="_blank" >注册会员</a>
+						 <a>注册会员</a>
 						 <span style="margin-left: 20px;">
         				 <a target="_blank" >我的资料</a></span>
+        				 <span style="margin-left: 20px;">
+        				 <a href="__MODULE__/Login/dologout" >退出登录</a></span>
 						</div>
 						<div class="info-safety">
 							<a class="bind-phone">
-								<i style="background-image: url(img/修改手机.png);"></i>修改手机</a>
+								<i style="background-image: url(__PUBLIC__/images/mobile.png);"></i>修改手机</a>
 							<a class="bind-email">
-								<i style="background-image: url(img/绑定邮箱.png);"></i>修改邮箱</a>
-							<a class="manage-addr"><i style="background-image: url(img/地址管理.png);"></i>地址管理</a>
+								<i style="background-image: url(__PUBLIC__/images/email.png);"></i>修改邮箱</a>
+							<a class="manage-addr"><i style="background-image: url(__PUBLIC__/images/address.png);"></i>地址管理</a>
 						</div>
 					</div>
 				</div>
@@ -193,8 +197,8 @@ a{
 					<div class="ms-side" style="margin-top: 20px;">
 						<article class="side-menu side-menu-off">
 							<dl class="side-menu-tree" style="padding-left: 50px;">
-								<dt><img src="__PUBLIC__/images/zuo/shop.png"  style="margin-right: 10px;margin-left: -20px;"/>我的购物车</dt>
-								<dt><img src="__PUBLIC__/images/zuo/file.png"  style="margin-right: 10px;margin-left: -20px;"/>订单管理</dt>
+								<dt><img src="__PUBLIC__/images/myCart.png"  style="margin-right: 10px;margin-left: -20px;"/><a href="__MODULE__/Cart">我的购物车</a></dt>
+								<dt><img src="__PUBLIC__/images/file.png"  style="margin-right: 10px;margin-left: -20px;"/>订单管理</dt>
 								<dd>
 									<a href="我的订单标注.html">我的订单</a>
 
@@ -204,7 +208,7 @@ a{
 
 								</dd>
 								
-								<dt><img src="__PUBLIC__/images/zuo/people.png"  style="margin-right: 10px;margin-left: -20px;"/>我的账户</dt>
+								<dt><img src="__PUBLIC__/images/my.png"  style="margin-right: 10px;margin-left: -20px;"/>我的账户</dt>
 								<dd>
 									<a href="__MODULE__/Userinfo">账户信息</a>
 
@@ -214,16 +218,16 @@ a{
 
 								</dd>
 								<dd>
-									<a href=".html">管理地址</a>
+									<a href="__MODULE__/Addrmanage">管理地址</a>
 
 								</dd>
 
 								
 
-								<dt><img src="__PUBLIC__/images/zuo/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
+								<dt><img src="__PUBLIC__/images/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
 
 								<dd>
-									<a href="意见投诉.html">意见/投诉</a>
+									<a href="__MODULE__/Contact">意见/投诉</a>
 
 								</dd>
 							</dl>

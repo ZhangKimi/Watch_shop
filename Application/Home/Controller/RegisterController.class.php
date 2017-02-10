@@ -58,6 +58,7 @@ class RegisterController extends Controller {
             $info['email'] = $_POST['email'];
             $info['integrale'] = $res['giveintegral'];
             $info['registtime'] = time();
+            $info['headpic'] = "";
             // 新增一条该用户的记录将email添加进去
             $fruit = $DbMysql -> add($info);
             if($fruit) {

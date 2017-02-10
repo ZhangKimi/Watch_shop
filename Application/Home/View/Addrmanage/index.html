@@ -1,39 +1,24 @@
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-		<meta name="keywords" content="">
-		<meta name="description" content="">
-		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
-		<link rel="stylesheet" href="__PUBLIC__/css/center.css" />
-		<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
-		<link rel="stylesheet" href="__PUBLIC__/css/ms-style.min.css" />
-		<link rel="stylesheet" href="__PUBLIC__/css/personal_member.min.css" />
-		<link rel="stylesheet" href="__PUBLIC__/css/Snaddress.min.css" />
-		<link rel="stylesheet" href="__PUBLIC__/css/sui.css" />
-		<script type="text/javascript" src="__PUBLIC__/js/sui.js" ></script>
-		<link href="__PUBLIC__/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
-		<script src="__PUBLIC__/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
-		<style>
-			a{
-				color: #000000;
-			}
-			.sui-table th, .sui-table td {
-			    padding: 6px 8px;
-			    line-height: 18px;
-			    text-align: left;
-			    vertical-align: middle;
-			    border-top: 1px solid #e6e6e6;
-			    font-size: 14px;
-			    color: #333333;
-			}
-		</style>
-	</head>
-	<body class="ms-body">
+<extend name="tpl/center" />
+<block name="main">
+	<style>
+		a{
+			color: #000000;
+		}
+		.sui-table th, .sui-table td {
+		    padding: 6px 8px;
+		    line-height: 18px;
+		    text-align: left;
+		    vertical-align: middle;
+		    border-top: 1px solid #e6e6e6;
+		    font-size: 14px;
+		    color: #333333;
+		}
+	</style>
+	<body class="ms-body" style="background:#FFF;">
 		<div id="ms-center" class="personal-member">
 			<div class="cont">
 				<div class="cont-main">
-					<div class="main-wrap mt15">
+					<div class="main-wrap mt15" style="background: #FFF;">
 						<h3>
 	                        <strong style=" font-size: 14px;">收货地址</strong>
 	                    </h3>
@@ -86,10 +71,10 @@
 					</div>
 				</div>
 							
-				<div style="margin-top: 30px;width: 1068px; margin: 15px 0 30px 170px;">
+				<div style="margin-top: 30px;width: 1068px; margin: 15px 0 30px 170px; background: #FFF;" >
 					<dl style="color: #F88600;font-size: 16px;margin-top: 69px;">您已添加<label id="had">{$had}</label>个地址，你还可以添加<label id="residue">{$residue}</label>个地址</dl>
 					
-					<table class="sui-table table-bordered-simple" style="margin-top: 20px;">
+					<table class="sui-table table-bordered-simple" style="margin-top: 20px;" >
 					  	<thead>
 					   		<tr>
 							    <th>收货人</th>
@@ -136,164 +121,165 @@
 		</div>
 		<div class="clear"></div>
 		<div class="ng-footer"></div>
-		<style type="text/css">
-			.sui-table td 
-			{
-				font-size: 14px;
-			}
-			.sui-table td 
-			{
-				font-size: 12px;
-			}
-			.ng-footer {
-				height: 130px;
-				margin-top: 0;
-			}
-			
-			.ng-s-footer {
-				height: 130px;
-				background: none;
-				text-align: center;
-			}
-			
-			.ng-s-footer p.ng-url-list {
-				height: 25px;
-				line-height: 25px;
-			}
-			
-			.ng-s-footer p.ng-url-list a {
-				color: #666666;
-			}
-			
-			.ng-s-footer p.ng-url-list a:hover {
-				color: #f60;
-			}
-			
-			.ng-s-footer .ng-authentication {
-				float: none;
-				margin: 0 auto;
-				height: 25px;
-				width: 990px;
-				margin-top: 5px;
-			}
-			
-			.ng-s-footer p.ng-copyright {
-				float: none;
-				width: 100%;
-			}
-			
-			.root1200 .ng-s-footer p.ng-copyright {
-				width: 100%;
-			}
-		</style>
 	</body>
-</html>
-<script>
-	$("#province").change(function(){
-		var obj = null;
-		var str = "<option value='0' selected>请选择城市</option>";
-		var provinceCode = $(this).val();
-		if(provinceCode != 0){
-			$.ajax({
-				url: '__MODULE__/Addrmanage/showCity',
-				type: 'POST',
-				dataType: 'json',
-				data: {code: provinceCode},
-				dataFilter: function(data) {
-					return data;
-				},
-				success: function(data) {
-					obj = eval(data);
-					for(var i = 0;i < obj.length;i++) {
-						str += "<option value='"+obj[i].code+"'>"+obj[i].name+"</option>";
-					}
-					$("#city").html(str);
-				}
-			});
-		}else {
-			$("#city").empty();
-			$("#city").html(str);
+	<style type="text/css">
+		.sui-table td 
+		{
+			font-size: 14px;
 		}
-	});
-
-	$("#city").change(function(){
-		var obj = null;
-		var str = "<option value='0' selected>请选择区</option>";
-		var cityCode = $(this).val();
-		if(cityCode != 0){
-			$.ajax({
-				url: '__MODULE__/Addrmanage/showArea',
-				type: 'POST',
-				dataType: 'json',
-				data: {code: cityCode},
-				dataFilter: function(data) {
-					return data;
-				},
-				success: function(data) {
-					obj = eval(data);
-					for(var i = 0;i < obj.length;i++) {
-						str += "<option value='"+obj[i].code+"'>"+obj[i].name+"</option>";
-					}
-					$("#area").html(str);
-				}
-			});
-		}else {
-			$("#area").empty();
-			$("#area").html(str);
+		.sui-table td 
+		{
+			font-size: 12px;
 		}
-	});
+		.ng-footer {
+			height: 130px;
+			margin-top: 0;
+		}
+		
+		.ng-s-footer {
+			height: 130px;
+			background: none;
+			text-align: center;
+		}
+		
+		.ng-s-footer p.ng-url-list {
+			height: 25px;
+			line-height: 25px;
+		}
+		
+		.ng-s-footer p.ng-url-list a {
+			color: #666666;
+		}
+		
+		.ng-s-footer p.ng-url-list a:hover {
+			color: #f60;
+		}
+		
+		.ng-s-footer .ng-authentication {
+			float: none;
+			margin: 0 auto;
+			height: 25px;
+			width: 990px;
+			margin-top: 5px;
+		}
+		
+		.ng-s-footer p.ng-copyright {
+			float: none;
+			width: 100%;
+		}
+		
+		.root1200 .ng-s-footer p.ng-copyright {
+			width: 100%;
+		}
+	</style>
 
-	$("a[did]").click(function(){
-		var delID = $(this).attr("did");
-		swal({
-	        title:"您确定要删除该条收货地址吗",
-	        text:"删除后将无法恢复，请谨慎操作！",
-	        type:"warning",
-	        showCancelButton:true,
-	        confirmButtonColor:"#DD6B55",
-	        confirmButtonText:"是的，我要删除！",
-	        cancelButtonText:"让我再考虑一下…",
-	        closeOnConfirm:false,
-	        closeOnCancel:false
-	    },function(isConfirm){
-	        if(isConfirm){
-	        	var had = 0;
-	        	var residue = 0;
-	            $.ajax({
-	                url: "__MODULE__/Addrmanage/del",
-	                type: 'POST',
-	                dataType: 'text',
-	                data: {id: delID},
-	                dataFilter:function(data){
-	                    return data;
-	                },
-	                success:function(data){
-	                    switch(data) {
-	                        case "1":
-	                            swal("删除成功！","您已经永久删除了这条收货地址。","success");
-	                            $("tr[hid='"+delID+"']").remove();
-                            	had = Number($("#had").html()) - 1;
-                            	residue = Number($("#residue").html()) + 1;
-                            	$("#had").html(had);
-                            	$("#residue").html(residue);
-	                            break;
-	                        case "0":
-	                            swal("删除失败！","请刷新后重试。","error");
-	                            break;
-	                    }
-	                },
-	                error:function(){
-	                    swal("网络不给力！","网络不给力 , 请检查网络设置。","error");
-	                }
-	            });
-	        }else{
-	            swal("已取消","您取消了删除操作！","error");
-	        }
-	    });
-	});
+	<script>
+		$("#province").change(function(){
+			var obj = null;
+			var str = "<option value='0' selected>请选择城市</option>";
+			var provinceCode = $(this).val();
+			if(provinceCode != 0){
+				$.ajax({
+					url: '__MODULE__/Addrmanage/showCity',
+					type: 'POST',
+					dataType: 'json',
+					data: {code: provinceCode},
+					dataFilter: function(data) {
+						return data;
+					},
+					success: function(data) {
+						obj = eval(data);
+						for(var i = 0;i < obj.length;i++) {
+							str += "<option value='"+obj[i].code+"'>"+obj[i].name+"</option>";
+						}
+						$("#city").html(str);
+					}
+				});
+			}else {
+				$("#city").empty();
+				$("#city").html(str);
+			}
+		});
 
-	$("span[sid]").click(function(){
-		var sid = $(this).attr("sid");
-		location.href = "__MODULE__/Addrmanage/setDefaAddr?id="+sid;
-	});
-</script>
+		$("#city").change(function(){
+			var obj = null;
+			var str = "<option value='0' selected>请选择区</option>";
+			var cityCode = $(this).val();
+			if(cityCode != 0){
+				$.ajax({
+					url: '__MODULE__/Addrmanage/showArea',
+					type: 'POST',
+					dataType: 'json',
+					data: {code: cityCode},
+					dataFilter: function(data) {
+						return data;
+					},
+					success: function(data) {
+						obj = eval(data);
+						for(var i = 0;i < obj.length;i++) {
+							str += "<option value='"+obj[i].code+"'>"+obj[i].name+"</option>";
+						}
+						$("#area").html(str);
+					}
+				});
+			}else {
+				$("#area").empty();
+				$("#area").html(str);
+			}
+		});
+
+		$("a[did]").click(function(){
+			var delID = $(this).attr("did");
+			swal({
+		        title:"您确定要删除该条收货地址吗",
+		        text:"删除后将无法恢复，请谨慎操作！",
+		        type:"warning",
+		        showCancelButton:true,
+		        confirmButtonColor:"#DD6B55",
+		        confirmButtonText:"是的，我要删除！",
+		        cancelButtonText:"让我再考虑一下…",
+		        closeOnConfirm:false,
+		        closeOnCancel:false
+		    },function(isConfirm){
+		        if(isConfirm){
+		        	var had = 0;
+		        	var residue = 0;
+		            $.ajax({
+		                url: "__MODULE__/Addrmanage/del",
+		                type: 'POST',
+		                dataType: 'text',
+		                data: {id: delID},
+		                dataFilter:function(data){
+		                    return data;
+		                },
+		                success:function(data){
+		                    switch(data) {
+		                        case "1":
+		                            swal("删除成功！","您已经永久删除了这条收货地址。","success");
+		                            $("tr[hid='"+delID+"']").remove();
+	                            	had = Number($("#had").html()) - 1;
+	                            	residue = Number($("#residue").html()) + 1;
+	                            	$("#had").html(had);
+	                            	$("#residue").html(residue);
+		                            break;
+		                        case "0":
+		                            swal("删除失败！","请刷新后重试。","error");
+		                            break;
+		                    }
+		                },
+		                error:function(){
+		                    swal("网络不给力！","网络不给力 , 请检查网络设置。","error");
+		                }
+		            });
+		        }else{
+		            swal("已取消","您取消了删除操作！","error");
+		        }
+		    });
+		});
+
+		$("span[sid]").click(function(){
+			var sid = $(this).attr("sid");
+			location.href = "__MODULE__/Addrmanage/setDefaAddr?id="+sid;
+		});
+	</script>
+</block>
