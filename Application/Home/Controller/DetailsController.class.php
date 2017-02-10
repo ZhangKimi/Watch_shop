@@ -22,6 +22,7 @@ class DetailsController extends Controller {
         $this -> assign("info", $res);
         $this -> assign("pid", $res['pid']);
         $this -> assign("title", $res['title']);
+        $this -> assign("brandid", $res['brandid']);
         $this -> assign("price", $res['price']);
         $this -> assign("stock", $res['stock']);
         $this -> assign("bname", $res['bname']);

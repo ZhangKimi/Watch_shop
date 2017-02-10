@@ -42,17 +42,40 @@
 	        	die('0');
 	        }
 	    }
+	    public function addDuo(){
+	        
+	        $db = M("cart");
 
+	 /*        die(dump($_POST)); */
+	        $data['uid'] = $_SESSION['user']['uid'];
+	        $data['pid'] = $_POST['pid'];
+	        /* $data['pid'] = $_POST['pid']; */
+	        $data['num'] = $_POST['num'];
+	        $data['pic'] = $_POST['pic'];
+	        $data['price'] = $_POST['price'];
+	        $data['name'] = $_POST['name'];
+	        $data['bid'] = $_POST['bid'];
+	  
+	       
+	        $result = $db -> add($data);
+	  
+            if($result) {
+                die('1'); 
+            }else {
+                die('0');
+            }
+	      
+	    }
 	    public function cartDel() {
-	    	$pid = $_POST['pid'];
-	    	$uid = $_SESSION['user']['uid'];
-
+	    	$cid = $_GET['id'];
 	    	$db = M('cart');
-	    	$result = $db -> where("`uid` = '{$uid}' AND `pid` = '{$pid}'") -> delete();
-	    	if($result) {
-	    		die("1");
-	    	}else {
-	    		die("0");
+	    	$res=$db -> where("`cid`='{$cid}'") ->delete();
+	    	if($res){
+	    	    $this->success('ok','index','0');
+	    	}else{
+	    	    $this->error('no','index');
 	    	}
+	    	
+	    	
 	    }
 	}
