@@ -10,4 +10,19 @@
             $this -> assign("result", displaySecond());
             $this -> display("index");
         }
+
+        public function add() {
+            $data['cname'] = $_POST['cname'];
+            $data['mobile'] = $_POST['mobile'];
+            $data['email'] = $_POST['email'];
+            $data['contents'] = $_POST['contents'];
+            $data['addtime'] = time();
+            $db = M('contact');
+            $result = $db -> add($data);
+            if($result) {
+                die("1");
+            }else {
+                die('0');
+            }
+        }
     }
