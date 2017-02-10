@@ -40,24 +40,23 @@
     function fun(){
     /* 	alert($("#addre:checked").val()) */
 			$.ajax({
-			url:"__MODULE__/MyOrder",
+			url:"__MODULE__/MyOrder/add",
 			type:"POST",
 			dataType:"text",
 			data:{
-				for(var i = 0;i < totalPrice.length;i++) {
-					
 				
-				zf:$("li[value]['i']").attr("value"),
-				addre:$("#addre:checked['i']").val(),
-				rname:$("#rname['i']").val(),
-				price:$("#showTotal['i']").html(),
-				name:$("#name['i']").val(),
-				total:$("#total['i']").html(),
-				phone:$("#mobile['i']").val(),
-				code:$("#postcode['i']").val(),
-				pid:$("#pid['i']").val()
+				zf:$("li[value]").attr("value"),
+				addre:$("#addre:checked").val(),
+				rname:$("#rname").val(),
+				price:$("#showTotal").html(),
+				name:$("#name").val(),
+				total:$("#total").html(),
+				phone:$("#mobile").val(),
+				code:$("#postcode").val(),
+				pid:$("#pid").val(),
+				num:$("#num").val()
 				},
-			}
+			
 			dataFilter:function(data){
 				return data;
 			},
@@ -78,6 +77,9 @@
 		});
     	
 	}
+    $("#pay").click(function(){
+		location.href = "__MODULE__/MyOrder";
+	});
     
 
 </script>
@@ -109,35 +111,38 @@
             <div class="liutext"><em>5</em><br /><strong>订单完成</strong></div>
         </div>
     </div>
-    <form action="" onclick="fun()">
+    <!-- <form action="" method="POST" onclick="fun()"> -->
     <div id="recaddress" align="center">
         <h3 style="text-align: left; margin-left: 120px;">收货地址</h3>
       
         <table cellspacing="0" cellpadding="10" width="82%">
          	<foreach name='add' item="value">
+         	<input type="hidden" name='add_id' value={$value['id']} />
             <tr style="margin:2px">
                 <td style="width: 10px;">
                 <!-- <input type="radio" name="recaddr" class="xuanze" value="0"/>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']} -->
-                     <input type="radio" name="recaddr['']" class="xuanze" value="{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}" id="addre"/>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}
+                     <input type="radio" name="recaddr" class="xuanze" value="{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}" id="addre"/>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}
                 </td>
                 
                 
                 <!-- <td style="width: 700px;">
                     <label>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}</label>
                 </td> -->
-                		<input type="hidden" id="rname" value="{$value['rname']}" />
+                		<input type="hidden" name="rname" id="rname" value="{$value['rname']}" />
      					<!-- <input type="hidden" id="addre" value="{$value['province']}{$value['city']}{$value['area']}{$value['addr']}" /> -->
-     					<input type="hidden" id="postcode" value="{$value['postcode']}" />
-                		<input type="hidden" id="mobile" value="{$value['mobile']}" />
+     					<input type="hidden" name="rpostcode" id="postcode" value="{$value['postcode']}" />
+                		<input type="hidden" name="mobile" id="mobile" value="{$value['mobile']}" />
             </tr>
             
             </foreach>
             <tr>
             	<td style='width:66px'>
-            		<a href="#">+添加新地址</a>
+            		<a href="__MODULE__/Addrmanage" target='_blank'>+添加新地址</a>
             	</td>
             </tr>
             </table>
+            </div>
+           <!--  </form> -->
            
     <div class="cart">
      	<div id="shoplist" align="center">
@@ -155,10 +160,10 @@
      			<tr class="list" pro="{$value['id']}">
      				
      				<td style="padding-left: 10px;">
-     					<input type="hidden" id="name" value="{$value['name']}" />
+     					<input type="hidden" id="name" name="name" value="{$value['name']}" />
      					<!-- <input type="hidden" id="price" value="{$value['price']}*{$value['num']}" /> -->
-     					<input type="hidden" id="num" value="{$value['num']}" />
-     					<input type="hidden" id="pid" value="{$value['pid']}" />
+     					<input type="hidden" id="num" name="num" value="{$value['num']}" />
+     					<input type="hidden" id="pid" name="pid" value="{$value['pid']}" />
      					
 						<img src="__PUBLIC__/admin/Uploads/Products/{$value['pic']}" width="45px" />
 						<span id="title">{$value['name']}</span>
@@ -204,7 +209,7 @@
             	</div>
      		<div id="footer">
 				<span class="label label-default" id="backbtn">返回首页</span>
-				<input type="submit" class="label label-danger" id="pay" onclick="fun()">提交订单
+				<span type="submit" class="label label-danger" id="pay" onclick="fun()">提交订单</span>
  			</div>
      	</div>
      	</form>

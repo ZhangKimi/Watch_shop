@@ -11,19 +11,14 @@
 	    	// 显示用户购物车购物数量
 	    	$num = shopCartNum($_SESSION['user']['uid']);
 	    	$this -> assign("shopNum", $num);
+	    	$this -> assign("number",$num);
 	    	// 显示导航
           	$this -> assign("list", displayFirst());
           	$this -> assign("result", displaySecond());
           	for($j = 0; $j < count($info);$j++) {
                 $info[$j]['id'] = $j + 1;
           	}
-          	$mod = M("products_details");
-            $info1 = $mod -> join('product ON products_details.pid = product.pid')
-                        -> join('brand ON products_details.brandid = brand.id')
-                        -> limit(0,5)
-                        -> select();
           	$this -> assign("info", $info);
-          	$this -> assign("info1", $info1);
           	$this -> display("index");
 	    }
         
@@ -83,5 +78,25 @@
 	    	}
 	    	
 	    	
+	    }
+	    
+	    public function add_num(){
+	        //var_dump($_POST);die;
+	        $m = M("cart");
+	        
+	        $stock = $m->table("product")->where("pid={$_POST['pid']}")->find()['stock'];
+	        if($_POST['num'] > $stock){
+	            echo "2";die;
+	        }
+	        
+	        if($_POST['num'] < 1){
+	            echo "3";die;
+	        }
+	        
+	        if($m->where("cid={$_POST['order_id']}")->setField("num",$_POST['num'])){
+	            echo "1";die;
+	        }else{
+	            echo "0";die;
+	        }
 	    }
 	}

@@ -10,9 +10,13 @@ class MyOrderController extends Controller {
         $this -> assign("result", displaySecond());
     	$this -> assign("a","1");
         
+        
+            
+    }
+    public function add(){
         //插入数据向数据库
         $time = time();
-        
+        $info = M('orders');
         $data['uid'] = $_SESSION['user']['uid'];
         $data['ordernumber'] = rand(111111,999999);
         $data['paymethod'] =$_POST['zf'];
@@ -22,11 +26,7 @@ class MyOrderController extends Controller {
         $data['name'] = $_POST['name'];
         $data['phone'] = $_POST['phone'];
         $data['pid'] = $_POST['pid'];
-        die(dump($data));
-        $info = M('orders');
-        
         $res = $info ->data($data) -> add();
-        
         if($res){
             $id = $res;
             $inf['id'] = $id;
@@ -36,21 +36,26 @@ class MyOrderController extends Controller {
             $inf['price'] = $_POST['total'];
             $inf['name'] = $_POST['rname'];
             $inf['num'] = $_POST['num'];
+        
             $result=$db -> add($inf);
+            /*   echo $db ->getLastSql();
+             die(dump($result));  */
             if($result) {
+                $uid = $_SESSION['user']['uid'];
+                $de = M('cart');
+                $de -> where("`uid` = $uid") -> delete();
                 // 添加成功
-                $this -> success("添加成功");
+                redirect(__MODULE__.'/MyOrder',2,'正在结算.');
             }else {
                 // 添加失败
-                $this -> error("添加失败");
-              
+                $this -> error("添加失败",'index');
+        
             }
         
-         }else {
-                // 添加失败
-                $this -> error("添加失败");
-            }
-            $this -> display("index");
+        }else {
+            // 添加失败
+            $this -> error("添加失败");
+        }
     }
     
 

@@ -18,6 +18,7 @@
      	<div id="shoplist" align="center">
      		<table cellspacing="0" cellpadding="10" width="85%">
      			<tr bgcolor="#F2F2F2" style="height: 35px;">
+     				<input type="hidden" value="{$number}" id="numbers"/>
      				<th style="text-align:center; width: 50px;"></th>
      				<th style="padding-left: 10px; width: 500px;">商品名称</th>
      				<th style="text-align:center; width: 120px;">价格(元)</th>
@@ -31,6 +32,7 @@
      				<td align="center"></td>
      				<td style="padding-left: 10px;">
      					<input type="hidden" name="pid" value="{$value['pid']}" />
+     					<input type="hidden" id="cid" value="{$value['cid']}" />
 						<img src="__PUBLIC__/admin/Uploads/Products/{$value['pic']}" width="45px" />
 						<span id="title">{$value['name']}</span>
 						<br /><span id="attribute"><label>品牌:</lable>{$value['bname']}</span>
@@ -40,8 +42,8 @@
 					  	<div class="input-group spinner" proID="{$value['id']}">  
 					    	<input type="text" class="form-control" value="{$value['num']}" data-max="10" data-min="1" data-step="1" proID="{$value['id']}">  
 					    	<div class="input-group-btn-vertical" id="number" proID="{$value['id']}">
-					      		<button class="btn btn-default" id="plus" proID="{$value['id']}" type="button"><i class="fa fa-caret-up"></i></button>  
-					      		<button class="btn btn-default" id="reduce" proID="{$value['id']}" type="button"><i class="fa fa-caret-down"></i></button>  
+					      		<button class="btn btn-default" id="plus" pid={$value['pid']} proID="{$value['id']}" cid="{$value['cid']}" type="button"><i class="fa fa-caret-up"></i></button>  
+					      		<button class="btn btn-default" id="reduce" pid={$value['pid']} proID="{$value['id']}" cid="{$value['cid']}" type="button"><i class="fa fa-caret-down"></i></button>  
 					    	</div>  
 					  	</div>  
      				</td>
@@ -53,7 +55,7 @@
      				<td align="center"></td>
      				<td colspan="3"><a href="#"></a></td>
      				<td colspan="2" style="padding-left: 10px; padding-right: 10px;" align="right" valign="middle">
-     					<span id="displayTotal">总计： <label id="total"></label></span>
+     					<span id="displayTotal">总计： <label id="total" name='tot'></label></span>
  					</td>
      			</tr>
      		</table>
@@ -88,12 +90,93 @@
 		(function ($) {  
 			$("#plus[proID]").on('click', function() {
 				var proNum = $(this).attr("proID");
+				var order_id = $(this).attr("cid");
+				var	pid_id = $(this).attr("pid");
+				var num = parseInt($("input[proID ='"+proNum+"']").val())+1;
+				 $.ajax({
+		        url:"__MODULE__/Cart/add_num",
+		        type:"POST",
+		        dataType:'text',
+		        async:true,
+		        data:
+		        {	order_id:order_id,
+				 	num:num,
+				 	pid:pid_id,
+		          },
+		            dataFilter:function(data){
+		            return data;
+		          },
+		              success:function(data)
+		            {
+		             switch(data)
+		                 {
+		                    case "1":
+		                
+		                    break;
+		                    case "0":
+		                    swal('添加失败！')
+		                    break;
+		                    case "2":
+		                    swal("库存量不足");
+		                    $("input[proID = '"+proNum+"']").val(num - 1);
+		                    break;
+		                 }
+		            },
+		             error:function(data)
+		            {
+		                 swal('失败','index')
+		            }
+		              });
+				
 	    		$("input[proID ='"+proNum+"']").val(parseInt($("input[proID = '"+proNum+"']").val(), 10) + 1);
 	    		$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
 	    		$("#total").html(showTotalPrice()+".00");
 		  	});
 		  	$("#reduce[proID]").on('click', function() {
 		  		var proNum = $(this).attr("proID");
+		  		var order_id = $(this).attr("cid");
+				var	pid_id = $(this).attr("pid");
+				var num = parseInt($("input[proID ='"+proNum+"']").val())-1;
+				 $.ajax({
+		        url:"__MODULE__/Cart/add_num",
+		        type:"POST",
+		        dataType:'text',
+		        async:true,
+		        data:
+		        {	order_id:order_id,
+				 	num:num,
+				 	pid:pid_id,
+		          },
+		            dataFilter:function(data){
+		            return data;
+		          },
+		              success:function(data)
+		            {
+		             switch(data)
+		                 {
+		                    case "1":
+		                
+		                    break;
+		                    case "0":
+		                    swal('添加失败！')
+		                    break;
+		                    case "2":
+		                    swal("库存量不足");
+		                    $("input[proID = '"+proNum+"']").val(num - 1);
+		                    break;
+		                    case "3":
+		                    break;
+		                 }
+		            },
+		             error:function(data)
+		            {
+		                 swal('失败','index')
+		            }
+		              });
+		  		
+		  		
+		  		
+		  		
 		  		if($("input[proID ='"+proNum+"']").val() > 1){
 		    		$("input[proID ='"+proNum+"']").val( parseInt($("input[proID = '"+proNum+"']").val(), 10) - 1);
 		    		$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
@@ -102,6 +185,7 @@
 		  	});
 		  	$("input[proID]").blur(function() {
 		  		var proNum = $(this).attr("proID");
+		  		alert(proNum);
 		  		if(!($("input[proID = '"+proNum+"']").val()) || $("input[proID = '"+proNum+"']").val() == 0){
 		  			$("input[proID = '"+proNum+"']").val(1);
 		  			$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
@@ -116,7 +200,13 @@
 			location.href = "__MODULE__/Index";
 		});
 		$("#pay").click(function(){
-			location.href = "__MODULE__/Order";
+			if($("#numbers").val()=="0"){
+				swal("亲，您的购物车空空如野，请您去买点！");
+			}else{
+				location.href = "__MODULE__/Order";
+			}
+			
+			
 		});
 		
 		var flag = 0;

@@ -50,10 +50,16 @@
                                         <td name="ordernumber">{$value['ordernumber']}</td>
                                         <td>{$value['phone']}</td>
                                         <td>{$value['addr']}</td>
-                                        <td>{$value['paymethod']}</td>
+                                        <td><eq name="value['paymethod']" value="1">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="2">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="3">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="4">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="5">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="6">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="7">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="8">网易支付</eq></td>
+                                        <td><eq name="value['paymethod']" value="9">网易支付</eq></td>
                                         <td>{$value['ordertime']}</td>
-                                       
-
                                         <td>
                                         <eq name="value['state']" value="0">新订单</eq>  
                                         <eq name="value['state']" value="1">已发货</eq>  

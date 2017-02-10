@@ -3,8 +3,14 @@
     use Think\Controller;
     class OrderController extends Controller {
         public function index(){
+            if(!$_SESSION['user']){
+               redirect(__MODULE__.'/Login/dologin'); 
+                /* $this->error('新增成功', __MODULE__.'/Login/dologin',3); */
+                
+            }
         	$uid = $_SESSION['user']['uid'];
     		$mod = M('cart');
+    		$cid = $_GET['cid'];
     		$info = $mod  -> join("brand ON brand.id = cart.bid") -> where("`uid` = '$uid'") -> select();
 //             die(dump($info));
     		$this ->assign('info',$info);
@@ -18,6 +24,5 @@
             $add = $db -> where("`uid` = '$uid'") -> select();
             $this -> assign('add',$add);
             $this -> display("index");
-            
         }
     }
