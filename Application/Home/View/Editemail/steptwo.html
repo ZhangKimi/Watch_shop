@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="__PUBLIC__/css/amazeui.min.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/sjsz.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/sui.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/sui.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/jd.css" />
+		<link href="__PUBLIC__/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<script src="__PUBLIC__/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+		<title></title>
+		<style>
+			/*.bottomLine {
+				border-bottom: 1px solid #ccc;
+				border-top: 1px solid #ccc;
+				margin-bottom: 10px;
+				/*padding: 10px;*/
+			/*padding-top: 10px;
+				padding-bottom: 10px;
+				word-spacing: 0.05rem;
+				text-align: center;
+				margin-top: 82px;*/
+			/*width:677px ;*/
+			/*line-height: ;*/
+			/*}*/
+			
+			.bottomLine {
+				border-bottom: 1px solid #ccc;
+				border-top: 1px solid #ccc;
+				padding-top: 8px;
+				/*padding-bottom:10px;*/
+			}
+			
+			.bot {
+				margin-bottom: 50px;
+				/*text-align: center;*/
+				color: #7b6f5b;
+			}
+			
+			.radio-pretty.checked > span:before {
+				color: #f88600;
+			}
+			
+			input {
+				height: 62px;
+			}
+			
+			.imgbot {
+				width: 128px;
+				height: 128px;
+			}
+			.am-form-field {
+    display: inline;
+    width: 100%;
+    width: 90%;
+    padding: .5em;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+}
+		</style>
+	</head>
+
+	<body>
+		<!--<div class="am-g" style="margin-top: 25px;">
+			
+		</div>-->
+		<div style="background-color: #F8F8F8;padding-top: 40px;">
+		<div class="am-g" >
+			<div class="logo"> 
+				<p style="font-size: 16px;color: #3d3d3d;margin-left: 16px;font-weight: bold;margin-top: -10px;    float: left">修改邮箱地址</p>
+			</div>
+			<div style="width: 1200px;margin: 0 auto;font-size: 12px;margin-top: -38px;"> 
+			<span style="float: right;color: #333333;">您好, {$Think.session.user.username}<span style="margin-left: 20px;margin-right: 20px;">|
+			</span><a href="__MODULE__/Login/logout">退出</a><span style="margin-left: 20px;margin-right: 20px;">|
+			</span><a href="__MODULE__/Center">个人中心</a></span>
+			</div>
+		</div>
+		</div>
+		<div style="background-color: #ffffff;padding-top: 30px;margin-top: 21px;">
+			<div class="am-g content" style="margin-top: 45px;">
+				<div data-am-widget="tabs" class="am-tabs am-tabs-d2">
+					<ul class="am-tabs-nav1" style="margin-top: 20px;display:flex;list-style: none;text-align: center;">
+						<li style="max-width: 95px; margin-left: 100px;"></li>
+						<li style="max-width: 80px;"><span class="am-badge1 am-round am-badge-warning-active " style="background-color: #F89406;font-size: 18px;">1</span>
+							<br />
+							<p class="bottitle active">验证身份</p>
+						</li>
+						<li style="max-width: 273px;">
+							<hr style="width: 273px;    border-top: 3px #F89406 solid;">
+						</li>
+						<li style="max-width: 80px;margin-left: 10px;"><span class="am-badge1  am-round am-badge-warning-active" style="background-color: #F89406;font-size: 18px">2</span>
+							<br />
+							<p class="bottitle active">修改邮箱地址</p>
+						</li>
+						<li style="max-width: 273px;">
+							<hr style="height: 3px;">
+						</li>
+						<li style="max-width: 80px;margin-left: 10px;"><span class="am-badge1  am-round" style="background-image: url(__PUBLIC__/images/right.png);background-repeat: no-repeat;background-position: center;background-position-x: 5px;"></span>
+							<br />
+							<p style="margin-left: -10px">完成</p>
+						</li>
+					</ul>
+					<!--输入账户名-->
+					<div class="am-tabs-bd" style="text-align: center;">
+						<div data-tab-panel-0 class="am-tab-panel am-active" style="margin-top: 20px;">
+							
+							
+							<div class="am-g" style="margin-top: 10px;margin-left: 50px;">
+								<span >新的邮箱地址：</span>
+								<input type="text" name="email" class="am-form-field" type="text" style="width: 285px;height: 45px;margin-left: 22px;" placeholder="请输入邮箱地址" />
+							</div>
+							<div class="am-g" style="margin-top: 10px;margin-left: 25px;">
+								<span >确认新的邮箱地址：</span>
+								<input type="text" name="reemail" class="am-form-field" type="text" style="width: 285px;height: 45px;margin-left: 17px;padding-left: 10px;" placeholder="请再次输入邮箱地址" />
+							</div>
+							<div class="am-g" style="margin-top: 30px;margin-left: 135px;">
+								<button  id="next" type="button" class="am-btn am-btn-warning" style="width: 265px;height: 50px;font-size: 16px;border: 1px rgba(187, 187, 187, 0.5)B solid;margin: 0 auto;border-radius: 5px;">下一步</button> 
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		</div>
+	</body>
+</html>
+<script>
+	$("#next").click(function(){
+		var reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+\.){1,63}[a-z0-9]+$/;
+		if($("input[name='email']").val() == "") {
+			swal({
+                title: "新邮箱不能为空",
+                text: "Woops ..要有邮箱才安全哦~",
+                type: "error",
+                confirmButtonText: "我知道了"
+            });
+		}else {
+			if(!reg.test($("input[name='email']").val())) {
+					swal({
+	                title: "新邮箱格式不正确",
+	                text: "Woops ..请正确的设置邮箱哦~",
+	                type: "error",
+	                confirmButtonText: "我知道了"
+	            });
+			}else {
+				if($("input[name='reemail']").val() == "") {
+					swal({
+		                title: "确认邮箱不能为空",
+		                text: "Woops ..这是为了防止错误输入哦~",
+		                type: "error",
+		                confirmButtonText: "我知道了"
+		            });
+				}else {
+					if(!reg.test($("input[name='reemail']").val())) {
+							swal({
+			                title: "确认邮箱格式不正确",
+			                text: "Woops ..请正确的设置邮箱哦~",
+			                type: "error",
+			                confirmButtonText: "我知道了"
+			            });
+					}else {
+						if($("input[name='email']").val() != $("input[name='reemail']").val()) {
+							swal({
+				                title: "两次邮箱输入不一致",
+				                text: "Woops ..这是为了防止错误输入哦~",
+				                type: "error",
+				                confirmButtonText: "我知道了"
+				            });
+						}else {
+							$.ajax({
+								url: '__MODULE__/Editemail/doedit',
+								type: 'POST',
+								dataType: 'text',
+								data: {email: $("input[name='email']").val()},
+								dataFilter: function(data) {
+									return data;
+								},
+								success: function(data) {
+									switch(data) {
+										case '1':
+											location.href = "__MODULE__/Editemail/stepThree?remind=success&extent=allow";
+											break;
+										case '0':
+											location.href = "__MODULE__/Editemail/stepThree?remind=fail&extent=allow";
+											break;
+									}
+								},
+								error: function() {
+									swal("修改邮箱失败","网络连接失败 , 请检查网络设置","error");
+								}
+							});
+						}
+					}
+				}
+			}
+		}
+	});
+	
+	$("input[name='email']").blur(function(){
+
+		if(!$("input[name='email']").val() == ""){
+			$.ajax({
+					url: '__MODULE__/Editemail/inExsistEmail',
+					type: 'POST',
+					dataType: 'text',
+					data: {email: $("input[name='email']").val()},
+					dataFilter: function(data) {
+						return data;
+					},
+					success: function(data) {
+						switch(data) {
+							case '1':
+								swal({
+									title: "该邮箱以被绑定其他用户",
+									text: "Woops ..换一个邮箱试试",
+									type: "error",
+									confirmButtonText: "我知道了"
+								});
+								flag = false;
+								break;
+							case '0':
+								flag = true;
+								break;
+						}
+					},
+					error: function() {
+						flag = false;
+						swal({
+							title: "网络连接失败",
+							text: "Woops ..请检查网络设置",
+							type: "error",
+							confirmButtonText: "我知道了"
+						});
+					}
+				});
+
+
+			}
+
+		});
+</script>
