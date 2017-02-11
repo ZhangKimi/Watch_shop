@@ -7,6 +7,26 @@
 			if(!$_SESSION['user']) {
 				$this -> error("请先登录", __MODULE__."/Login",2);
 			}
+			$uid = $_SESSION['user']['uid'];
+			$db = M('user_details');
+			$result = $db -> field("email") -> where("`uid` = '{$uid}'") -> find();
+			preg_match("/.*?@/",$result['email'],$res1);
+			// 用正则表达式获取邮箱头部去掉@符号
+			$mail1 = rtrim($res1[0], "@");
+			// 截取邮箱头部前2个字符
+			$mailHead = substr($mail1,0,2);
+			// 截取邮箱头部后2个字符
+			$mailFooter = substr($mail1,-2);
+			// 设置隐藏符号
+			$mail2 = "****";
+			// 获取邮箱域名包括@符号
+			preg_match("/@.*?$/", $result['email'],$res2);
+			$mail3 = $res2[0];
+			// 生成加密后的邮箱字符串
+			$email = $mailHead.$mail2.$mailFooter.$mail3;
+			// 向前台模板电子邮箱变量赋值
+			$this -> assign("email", $email);
+			
 			$this -> display("stepone");
 		}
 
@@ -50,30 +70,6 @@
 
 			$this -> display("stepThree");
 		}	
-		
-		// public function stepThree() {
-			// if(empty($_GET['extent'])) {
-				// $this -> error("非法操作", __MODULE__."/Editpwd",2);
-			// }else {
-				// if($_GET['extent'] != "allow") {
-					// $this -> error("非法操作", __MODULE__."/Editpwd",2);
-				// }
-			// }
-
-			// if(isset($_GET['remind'])) {
-				// switch($_GET['remind']) {
-					// case 'success':
-						// $this -> assign("remind", "恭喜您 , 密码修改成功");
-						// $this -> assign("btn", "finish");
-						// break;
-					// case 'fail':
-						// $this -> assign("remind", "很抱歉 , 密码修改失败 , 可能您的新密码与原密码一致");
-						// $this -> assign("btn", "back");
-						// break;
-				// }
-			// }
-			// $this -> display("stepthree");
-		// }
 
 		
 		public function checkPwd() {
