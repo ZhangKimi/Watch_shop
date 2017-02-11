@@ -283,7 +283,7 @@
         $("#collect").click(function() {
             if(uid) {
                 $.ajax({
-                    url: '__MODULE__/Collect',
+                    url: '__MODULE__/Collect/add',
                     type: 'POST',
                     dataType: 'text',
                     data: {pid: $("#pid").val()},
