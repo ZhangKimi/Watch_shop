@@ -95,7 +95,7 @@
         <div class="container">
             <div class="single-main">
                 <div class="col-md-9 single-main-left">
-                <div class="sngl-top">
+                   <div class="sngl-top">
                     <div class="col-md-5 single-top-left">  
                         <div class="flexslider">
                             <ul class="slides">
@@ -192,12 +192,13 @@
                 </li>
                 <li class="item3">
                     <a href="#">
-                        <img src="__PUBLIC__/images/arrow.png" alt="">商品评价
+                        <img src="__PUBLIC__/images/arrow.png" alt="">服务承诺
                     </a>
                     <ul>
-                        <li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
-                        <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
-                        <li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
+                        <li class="subitem1"><a href="#">服务承诺：
+                            本商城卖家销售并发货的商品，由平台卖家提供发票和相应的售后服务。请您放心购买！
+                            <br>
+                            注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！ </a></li>
                     </ul>
                 </li>
             </ul>
@@ -223,7 +224,7 @@
                     </div>
                 </div>
             </div>
-                <div class="col-md-3 single-right">
+               <!--  <div class="col-md-3 single-right">
                     <div class="w_sidebar">
                         <section  class="sky-form">
                             <h4>Catogories</h4>
@@ -250,7 +251,28 @@
                             </div>
                         </section>
                     </div>
+                </div> -->
+                <div class="col-md-3 single-right" ;>
+                    <div class="w_sidebar" style= "height:800px">
+                        <section  class="sky-form">
+                            <h4>推荐商品</h4>
+                                <div style="background-color: #fff;margin-top: 10px;height: 741px;padding: 7px;">
+                                    <foreach name='res1' item='va'>
+                                    <div style="float:left ;">
+                                        <a href="__MODULE__/Details/index?id={$va['pid']}" class="mask">
+                                            <img src="__PUBLIC__/admin/Uploads/Products/{$va['picurl']}" style="margin-top: 10px;height: 120px;width: 119px;float: left;"/> 
+                                            <br />
+                                            <span style="display: block;float: center;margin-left: 10px;color: #f78642;font-size: 16px;">¥ {$va['price']}</span>
+                                            <div style="float: center;height: 20px;margin-left: 10px;">库存量{$va['stock']}</div>
+                                            <p style="margin-left:10px;width: 100px;font-size: 12px;color: #686868">{$va['title']}</p>
+                                        </a>
+                                    </div>
+                                    </foreach>
+                                </div>
+                        </section>
+                    </div>
                 </div>
+
                 <div class="clearfix"> </div>
             </div>
         </div>
@@ -261,7 +283,7 @@
         $("#collect").click(function() {
             if(uid) {
                 $.ajax({
-                    url: '__MODULE__/Collect',
+                    url: '__MODULE__/Collect/add',
                     type: 'POST',
                     dataType: 'text',
                     data: {pid: $("#pid").val()},

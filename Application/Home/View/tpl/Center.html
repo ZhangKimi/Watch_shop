@@ -139,11 +139,11 @@
 					</div>
 					<nav class="ms-nav">
 						<ul>
-							<li class="">
-								<a href="__MODULE__/Center" data-url=""  style=" padding-bottom: 17px;border-bottom: 3px #fff solid;">首页</a>
-							<i class="nav-arrow"></i></li>
+							<li class="nav-manage">
+								<a href="__MODULE__/Center" data-url="__MODULE__/Center">首页</a>
+							</li>
 							<li class="nav-manage selected">
-								<a href="" data-url="">账户管理<em hidden></em></a><i class="nav-arrow" hidden></i>
+								<a href="__MODULE__/Userinfo" data-url="__MODULE__/Userinfo">账户管理<em hidden></em></a>
 							</li>
 						</ul>
 					</nav>
@@ -170,18 +170,21 @@
 					<div class="ms-name-info">
 
 						<div class="info-member">
-						 <a>注册会员</a>
-						 <span style="margin-left: 20px;">
-        				 <a target="_blank" >我的资料</a></span>
-        				 <span style="margin-left: 20px;">
-        				 <a href="__MODULE__/Login/dologout" >退出登录</a></span>
+						 	<span style="cursor: default;">会员类型: 注册会员</span>
+						 	<span style="margin-left: 20px;">
+        				 		<a href="__MODULE__/Userinfo" >我的资料</a>
+    				 		</span>
+        				 	<span style="margin-left: 20px;">
+        				 		<a href="__MODULE__/Login/dologout" >退出登录</a>
+    				 		</span>
 						</div>
 						<div class="info-safety">
-							<a class="bind-phone">
+							<a class="bind-phone" href="__MODULE__/Editphone" target="_blank">
 								<i style="background-image: url(__PUBLIC__/images/mobile.png);"></i>修改手机</a>
-							<a class="bind-email">
+							<a class="bind-email" href="__MODULE__/Editemail" target="_blank">
 								<i style="background-image: url(__PUBLIC__/images/email.png);"></i>修改邮箱</a>
-							<a class="manage-addr"><i style="background-image: url(__PUBLIC__/images/address.png);"></i>地址管理</a>
+							<a class="manage-addr" href="__MODULE__/Addrmanage">
+								<i style="background-image: url(__PUBLIC__/images/address.png);"></i>地址管理</a>
 						</div>
 					</div>
 				</div>
@@ -214,7 +217,7 @@
 
 								</dd>
 								<dd>
-									<a href="__MODULE__/Edituserinfo">修改账户</a>
+									<a href="__MODULE__/Edituserinfo">修改账户信息</a>
 
 								</dd>
 								<dd>
@@ -287,7 +290,5 @@
 				width: 100%;
 			}
 		</style>
-		<script type="text/javascript " src="js/safe/ms_common.min.js "></script>
 	</body>
-
 </html>
