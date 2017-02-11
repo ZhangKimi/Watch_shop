@@ -2,26 +2,68 @@
 <block name="main">
 	<head>
 		<meta charset="utf-8">
-		<title></title>
-		<script type="text/javascript" src="js/safe/aywmq_qt.js" ></script>
-		<script type="text/javascript" src="js/safe/da_opt.js" ></script>
+		<title>修改账户信息</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
-		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-		<link rel="stylesheet" href="css/safe/css.css" />
-		<link rel="stylesheet" href="css/safe/common.min.css" />
-		<link rel="stylesheet" href="css/safe/ms-style.min.css" />
-		<link rel="stylesheet" href="css/safe/personal_member.min.css" />
-		<link rel="stylesheet" href="css/safe/Snaddress.min.css" />
-		<script type="text/javascript" src="js/sui.js" ></script>
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
+		<link rel="stylesheet" href="__PUBLIC__/css/css.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/ms-style.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/personal_member.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/Snaddress.min.css" />
+		<style>
+			.text {
+				padding-top: 0px !important;
+				padding-bottom: 0px !important;
+			}
+
+			.profile-avatar img {
+				left: 0px !important;
+				top: 0px !important;
+			}
+		</style>
+		<script type="text/javascript">
+            var cYear = 0;
+            var cMonth = 0;
+            /*********************************************
+            *函数名称：judgeYear
+            *函数功能：判断平闰年
+            *形参列表：year		被判断的年份
+            *返 回 值：true 闰年	false 平年
+            *E - mail：ice_wan@msn.cn
+            **********************************************/
+            function judgeYear(year)
+            {
+                 return (!(year % 4) && (year % 100) || !(year % 400));
+            }
+            
+            /*********************************************
+            *函数名称：dateOfMonth
+            *函数功能：判断某年某月有多少天
+            *形参列表：year	年份	month 月份
+            *返 回 值：计算结果
+            *E - mail：ice_wan@msn.cn
+            **********************************************/
+            function dateOfMonth(year, month)
+            {
+                switch(month)
+                {
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    return 31;
+                case 4: case 6: case 9: case 11:
+                    return 30;
+                case 2:
+                    return judgeYear(year) ? 29 : 28;
+                default:
+                    return 0;
+                }
+            }
+        </script>
 	</head>
 	<body class="ms-body">
 		<div id="" class="ng-top-banner"></div>
-
-
 		<div id="ms-center" class="personal-member">
 			<div class="cont">
-
 				<div class="cont-main">
 					<div class="main-wrap mt15">
 						<h3>
@@ -30,46 +72,63 @@
 						<div class="user-profile clearfix">
 							<div class="user-profile-wrap">
 								<div class="profile-avatar">
-									<img src="img/头像.png" height="120" width="120">
-									<a href="" name="">编辑头像</a>
+									<eq name="isHeadPic" value="1">
+										<img src="{$headpic}" height="120" width="120">
+									</eq>
+
+									<eq name="isHeadPic" value="0">
+										<img src="__PUBLIC__/images/default.jpg" height="120" width="120">
+									</eq>
+									<a href="__MODULE__/Editheadpic" target="_blank" style="cursor: pointer;">编辑头像</a>
 									<div class="edit_bg"></div>
 								</div>
 							</div>
 							<div class="profile-info">
-								
-								<div class="control-group clearfix ">
-									<div class="controls lh26">
-										<label class="control-label"><span style="margin-left: 10px;">真实姓名：</span> 
-											<input  style="margin-left: 10px;" type="text" class="text">
-									</div>
-								</div>
-								
-								<div class="control-group clearfix ">
-									<div class="controls lh26">
-										<label class="control-label"><span style="margin-left: 10px;">绑定邮箱：</span> 
-										<span>980****10@qq.com</span>
-										&nbsp;&nbsp;
-										<a>修改</a>
-									</div>
 									
+								<div class="control-group clearfix ">
+									<div class="controls lh26">
+										<label class="control-label">
+											<span style="margin-left: 10px;">真实姓名：</span> 
+										</label>
+										<input style="margin-left: 10px;" type="text" class="text" name="realname" value="{$realname}">
+									</div>
 								</div>
 								
 								<div class="control-group clearfix ">
 									<div class="controls lh26">
-										<label class="control-label"><span style="margin-left: 10px;">绑定手机：</span> 
-										<span>188***210</span>
-										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<a>修改</a>
+										<label class="control-label">
+											<span style="margin-left: 10px;">绑定邮箱：</span>
+										</label> 
+										<span style="margin-left: 10px;">{$email}</span>&nbsp;&nbsp;
+										<a href="__MODULE__/Editemail" target="_blank">修改</a>
+									</div>
+								</div>
+								
+								<div class="control-group clearfix ">
+									<div class="controls lh26">
+										<label class="control-label">
+											<span style="margin-left: 10px;">绑定手机：</span>
+										</label> 
+										<span style="margin-left: 10px;">{$mobile}</span>&nbsp;&nbsp;
+										<eq name="isMobile" value="1">
+											<a href="__MODULE__/Editphone" target="_blank">修改</a>
+										</eq>
+										<eq name="isMobile" value="0">
+											<a href="__MODULE__/Editphone" target="_blank">设置</a>
+										</eq>
+
 									</div>
 								</div>								
 								
 								<div class="control-group clearfix ">
 									<div class="controls lh26">
-										<label class="control-label"><span style="margin-left: 10px;">性&nbsp;&nbsp;&nbsp;&nbsp;别：</span> 
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" checked="checked">
-											<span>男</span>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" >
-											<span>女</span>	
+										<label class="control-label" style="display: block; width: 74px;">
+											<span style="margin-left: 10px;">性别：</span>
+										</label>
+										<input type="radio" name="sex" value="1"  <eq name="sex" value="1">checked</eq> style="margin-left: 11px;">
+										<span style="margin-left: 5px;">男</span>
+										<input type="radio" value="2" name="sex" <eq name="sex" value="2">checked</eq> style="margin-left: 30px;">
+										<span style="margin-left: 5px;">女</span>	
 									</div>
 								</div>
 
@@ -77,33 +136,44 @@
 								<div class="control-group clearfix ">
 									<div class="controls lh26">
 										<label class="control-label"><span style="margin-left: 10px;">出生日期：</span> &nbsp;&nbsp;
+										</label>
 										<!-- <input  style="margin-left: 10px;" type="text" class="text"> -->
-										<select class="form-control" name="parid">{$option}</select>&nbsp;&nbsp;
-										<select class="form-control" name="parid">{$option}</select>&nbsp;&nbsp;
-										<select class="form-control" name="parid">{$option}</select>
+										<select class="form-control" name="year" id="year">
+											<option value="0" yid="0">请选择年份</option>
+											<script type="text/javascript">
+								                var date = new Date();
+								                var nowYear = date.getFullYear();
+								                for(var i = 1937;i <= nowYear;i++){
+								                    document.write("<option value='"+i+"' yid='"+i+"'>"+i+"</option>");
+								                }
+								            </script>
+										</select> <label>年</label>
+										<select class="form-control" name="month" id="month">
+											<option value="0" mid="0">请选择月份</option>
+										</select> <label>月</label>
+										<select class="form-control" name="day" id="day">
+											<option value="0" did="0">请选择日期</option>
+										</select> <label>日</label>
 									</div>
 								</div>
 								
 								<div class="control-group clearfix priority-low">
 									<label class="control-label">&nbsp;</label>
-									<div style="float:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href=""  class="ms-stand-btn1" >提 交</a>
+									<div style="float:left; margin-left: 7px;">
+										<a class="ms-stand-btn1" id="submit" style="cursor: pointer">提 交</a>
 									</div>
 									<div id="" class="error-place"></div>
 									<div class="error-place mt29"></div>
 								</div>
-
-								
-
 							</div>
 						</div>
-
 					</div>
 				</div>
-				
-				
 			</div>
 		</div>
+		
+		
+
 		<div class="clear"></div>
 		<div class="ng-footer">
 			<textarea class="footer-dom" id="footer-dom-02">
@@ -152,7 +222,124 @@
 				width: 100%;
 			}
 		</style>
-		<script type="text/javascript" src="js/safe/ms_common.min.js" ></script>
 	</body>
+	<script type="text/javascript">
+	    function sendYear(num1){
+	        cYear = parseInt(num1);
+	        var mymonth = document.getElementById('month');
+	        var str1 = "<option value='0' mid='0'>请选择月份</option>";
+	        for(var j = 1;j <= 12;j++){
+	            str1 += "<option value='"+j+"' mid='"+j+"'>"+j+"</option>";
+	        }
+	        mymonth.innerHTML = str1;
+	    }
+	    
+	    function sendMonth(num2){
+	        var myday = document.getElementById('day'); 
+	        cMonth = parseInt(num2);
+	        var str2 = "<option value='0' did='0'>请选择日期</option>";
+	        var day = parseInt(dateOfMonth(cYear, cMonth));
+	        for(var k = 1;k <= day;k++){
+	            str2 += "<option value='"+k+"' did='"+k+"'>"+k+"</option>"
+	        };
+	        myday.innerHTML = str2;
+	    }
 
+	    $("#year").change(function(){
+	    	sendYear(this.value);
+	    	$(this).css('color', '#000');
+	    });
+
+	    $("#month").change(function(){
+	    	sendMonth(this.value);
+	    	$(this).css('color', '#000');
+	    });
+
+	    $("#day").change(function(){
+	    	$(this).css('color', '#000');
+	    });
+
+	    $("#submit").click(function(){
+	    	if(!$("input[name='realname']").val()) {
+	    		swal({
+	                title: "真实姓名不可以为空",
+	                text: "请填写真实姓名哦~这个是保密的",
+	                type: "error",
+	                confirmButtonText: "我知道了"
+	            });
+	    	}else {
+	    		if($("#year").val() == '0' || $("#month").val() == '0' || $("#day").val() == '0'){
+	    			swal({
+		                title: "出生日期不可以不选择哦",
+		                text: "这让我们更加的了解您 , 从而可以推荐更多您喜欢的商品",
+		                type: "error",
+		                confirmButtonText: "我知道了"
+		            });
+	    		}else {
+	    			$.ajax({
+	    				url: '__MODULE__/Edituserinfo/doedit',
+	    				type: 'POST',
+	    				dataType: 'text',
+	    				dataFilter: function(data) {
+	    					return data;
+	    				},
+	    				data: {
+	    					realname: $("input[name='realname']").val(),
+	    					year: $("#year").val(),
+	    					month: $("#month").val(),
+	    					day: $("#day").val(),
+	    					sex: $("input[name='sex']:checked").val()
+	    				},
+	    				success: function(data) {
+	    					switch(data) {
+	    						case '1':
+	    							swal({
+						                title: "修改成功",
+						                text: "您的个人信息修改成功",
+						                type: "success",
+						                confirmButtonText: "我知道了"
+						            });
+						            $("#year").css("color","#bbb");
+						            $("#month").css("color","#bbb");
+						            $("#day").css("color","#bbb");
+	    							break;
+    							case '0':
+    								swal({
+						                title: "修改失败",
+						                text: "您的资料可能没有修改 , 请重试",
+						                type: "error",
+						                confirmButtonText: "我知道了"
+						            });
+    								break;
+	    					}
+	    				},
+	    				error: function() {
+	    					swal({
+				                title: "修改失败",
+				                text: "网络连接失败,请检查网络设置",
+				                type: "error",
+				                confirmButtonText: "我知道了"
+				            });
+	    				}
+	    			});
+	    		}
+	    	}
+	    });
+
+	    $(function(){
+	    	$("option[yid='{$year}']").attr("selected","");
+	    	if($("option[yid='{$year}']").attr("selected") == "selected") {
+	    		sendYear(Number({$year}));
+	    	}
+
+	    	$("option[mid='{$month}']").attr("selected","");
+	    	if($("option[mid='{$month}']").attr("selected") == "selected") {
+    			sendMonth(Number({$month}));
+    		}
+
+			$("option[did='{$day}']").attr("selected","");
+    		// $("option[mid='{$month}']").attr("selected","");
+    		// $("option[did='{$day}']").attr("selected","");
+	    });
+	</script>
 </block>

@@ -6,13 +6,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" href="__PUBLIC__/css/amazeui.min.css" />
 		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js"></script>
-		<link href="__PUBLIC__/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
-		<script src="__PUBLIC__/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
 		<link rel="stylesheet" href="__PUBLIC__/css/sjsz.css" />
 		<link rel="stylesheet" href="__PUBLIC__/css/sui.css" />
-		<!-- <script type="text/javascript" src="js/sui.js"></script> -->
+		<script type="text/javascript" src="__PUBLIC__/js/sui.js"></script>
 		<link rel="stylesheet" href="__PUBLIC__/css/jd.css" />
-		<title>修改密码</title>
+		<link href="__PUBLIC__/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+		<script src="__PUBLIC__/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+		<title>修改绑定手机</title>
 		<style>
 			/*.bottomLine {
 				border-bottom: 1px solid #ccc;
@@ -62,11 +62,11 @@
 		<div style="background-color: #F8F8F8;padding-top: 40px;">
 		<div class="am-g" >
 			<div class="logo"> 
-				<p style="font-size: 16px;color: #3d3d3d;margin-left: 16px;font-weight: bold;margin-top: -10px;    float: left">修改密码</p>
+				<p style="font-size: 16px;color: #3d3d3d;margin-left: 16px;font-weight: bold;margin-top: -10px;    float: left">修改手机号码</p>
 			</div>
 			<div style="width: 1200px;margin: 0 auto;font-size: 12px;margin-top: -38px;"> 
 			<span style="float: right;color: #333333;">您好, {$Think.session.user.username}<span style="margin-left: 20px;margin-right: 20px;">|
-			</span><a href="__MODULE__/Login/logout">退出</a><span style="margin-left: 20px;margin-right: 20px;">|
+			</span><a href="__MODULE__/Login/dologout">退出</a><span style="margin-left: 20px;margin-right: 20px;">|
 			</span><a href="__MODULE__/Center">个人中心</a></span>
 			</div>
 		</div>
@@ -85,13 +85,12 @@
 						</li>
 						<li style="max-width: 80px;margin-left: 10px;"><span class="am-badge1  am-round" style="font-size: 18px;">2</span>
 							<br />
-							<p class="bottitle">修改登录密码</p>
+							<p class="bottitle">修改手机号码</p>
 						</li>
 						<li style="max-width: 273px;">
 							<hr>
 						</li>
-						<li style="max-width: 80px;margin-left: 10px;">
-						<span class="am-badge1  am-round" style="background-image: url(__PUBLIC__/images/right.png);background-repeat: no-repeat;background-position: center;background-position-x: 5px;"></span>
+						<li style="max-width: 80px;margin-left: 10px;"><span class="am-badge1  am-round" style="background-image: url(__PUBLIC__/images/right.png);background-repeat: no-repeat;background-position: center;background-position-x: 5px;"></span>
 							<br />
 							<p class="bottitle" style="margin-left: -10px">完成</p>
 						</li>
@@ -101,29 +100,39 @@
 						<div data-tab-panel-0 class="am-tab-panel am-active" style="margin-top: 50px;">
 							<div class="am-g">
 								<img src="__PUBLIC__/images/warning1.png" />
-								<span style="font-weight:normal;margin-left: 10px;font-size: 14px;color: #3d3d3d">您正在使用  当前登录密码 验证身份,请完成以下操作</span>
+								<span style="font-weight:normal;margin-left: 10px;font-size: 14px;color: #3d3d3d">您正在使用  当前登录密码和绑定手机号码 验证身份,请完成以下操作</span><br />
+								<span style="font-weight:normal;margin-left: 35px;font-size: 14px;color: #3d3d3d">{$remind} <font color="#F00">{$currentMobile}</font></span>
 							</div>
 							
 							<div class="am-g" style="margin-top: 20px;margin-left: 140px;">
-								<span style="height: 45px; width: 100px; display:block; line-height: 45px;float:left;">当前登录密码：</span>
-								<input class="am-form-field" type="password" name="userpass" style="width: 285px;height: 45px;margin-left: 15px; float:left" placeholder="请输入当前密码"/>
+								<span style="height: 45px; width: 120px; display:block; line-height: 45px;float:left;">当前登录密码：</span>
+								<input class="am-form-field" type="password" name="userpass" style="width: 285px;height: 45px;margin-left: 15px; float:left" placeholder="请输入当前登录密码"/>
+							</div>
+							
+							<div class="am-g" style="margin-top: 20px;margin-left: 140px;">
+								<span style="height: 45px; width: 120px; display:block; line-height: 45px;float:left;">当前手机号码：</span>
+								<input class="am-form-field" name="mobile" type="text" style="width: 285px;height: 45px;margin-left: 15px; float:left" placeholder="请输入当前绑定手机号码"/>
 							</div>
 						</div>
 					</div>
 					<div data-tab-panel-2 class="am-tab-panel ">
 						<div class="am-g" style="margin-top: 50px;">
 							<div class="am-u-sm-6 am-u-sm-offset-3 " style="text-align: center;">
-								<button type="button" id="next" class="am-btn am-btn-warning" style="width: 265px;height: 50px;font-size: 16px;border: 1px rgba(187, 187, 187, 0.5) solid; border-radius:5px;margin: 0 auto;">下一步</button>
+								<button id="next" type="button" class="am-btn am-btn-warning" style="width: 265px;height: 50px;font-size: 16px;border: 1px rgba(187, 187, 187, 0.5) solid; border-radius:5px;margin: 0 auto;">下一步</button> 
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 		</div>
 	</body>
+
 </html>
 <script>
+	var reg = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$/;
 	$("#next").click(function(){
 		if(!$("input[name='userpass']").val()) {
 			swal({
@@ -134,7 +143,7 @@
             });
 		}else {
 			$.ajax({
-				url: '__MODULE__/Editpwd/checkPwd',
+				url: '__MODULE__/Editphone/checkPwd',
 				type: 'POST',
 				dataType: 'text',
 				data: {userpass: $("input[name='userpass']").val()},
@@ -144,14 +153,41 @@
 				success: function(data) {
 					switch(data) {
 						case '1':
-							swal({
-	                            title: "验证通过",
-	                            text: "您当前登录密码输入正确",
-	                            type: "success",
-	                            confirmButtonText: "前往下一步"
-	                        },function(){
-	                            location.href = "__MODULE__/Editpwd/stepTwo?extent=allow";
-	                        });
+							var phone = $("input[name='mobile']").val();
+							$.ajax({
+								url: '__MODULE__/Editphone/checkMobile',
+								type: 'POST',
+								dataType: 'text',
+								data: {mobile: phone},
+								dataFilter: function(data) {
+									return data;
+								},
+								success: function(data) {
+									switch(data) {
+										case '1':
+											swal({
+					                            title: "验证通过",
+					                            text: "您当前的登录密码与绑定手机输入正确",
+					                            type: "success",
+					                            confirmButtonText: "前往下一步"
+					                        },function(){
+					                            location.href = "__MODULE__/Editphone/stepTwo?extent=allow";
+					                        });
+											break;
+										case '0':
+											swal({
+					                            title: "验证失败",
+					                            text: "您输入的绑定手机号码不正确",
+					                            type: "error",
+					                        	confirmButtonText: " 我知道了"
+					                        });
+											break;
+									}
+								},
+								error: function() {
+									swal("验证失败","网络连接失败 , 请检查网络设置","error");
+								}
+							});
 							break;
 						case '0':
 							swal({
@@ -168,7 +204,5 @@
 				}
 			});
 		}
-			
-		
 	});
 </script>

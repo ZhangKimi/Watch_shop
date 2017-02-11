@@ -1,7 +1,5 @@
 <extend name="tpl/Center" />
 <block name="main">
-
-
 	<body class="ms-body" style="background:#FFF;">
 		<div id="ms-center" class="personal-member">
 			<div class="cont">
@@ -17,40 +15,38 @@
 								<div class="control-group clearfix " style="margin-top: 20px;margin-left: 20px;">
 									<div class="controls lh26">
 										<font style="font-weight: bold;">真实姓名<span style="margin-left: 7px;" >：</span></font>
-										<span>shiruyi0</span>
+										<span>{$realname}</span>
 									</div>
 									<br />
-									
 									<div class="controls lh26" style="width: 320px;">
 										<font style="font-weight: bold;">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别<span style="margin-left: 7px;" >：</span></font>
-										<span>男</span>
+										<span>{$sex}</span>
 									</div>
 									<br />	
 
 									<div class="controls lh26" style="width: 320px;">
 										<font style="font-weight: bold;">出生日期<span style="margin-left: 7px;" >：</span></font>
-										<span>1995/06/30</span>
+										<span>{$birthday}</span>
 									</div>
 									<br />										
 									
 									<div class="controls lh26" style="width: 320px;">
 										<font style="font-weight: bold;">绑定邮箱<span style="margin-left: 7px;" >：</font>
-										<span>980****10@qq.com</span>
+										<span>{$email}</span>
 									</div>
 									<br />
 									
 									<div class="controls lh26" style="width: 320px;">
 										<font style="font-weight: bold;">绑定手机<span style="margin-left: 7px;" >：</font>
-										<span>188***210</span>
+										<span>{$mobile}</span>
 									</div>
 									
 									<br />
 									<div class="controls lh26" style="width: 320px;">
 										<font style="font-weight: bold;">注册时间<span style="margin-left: 7px;" >：</font>
-										<span>188***210</span>
+										<span>{$registtime|date="Y-m-d H:i:s",###}</span>
 									</div>									
 								</div>
-								
 							</div>
 						</div>
 						<input id="" type="hidden">
@@ -59,16 +55,27 @@
 
 								<div class="control-group clearfix"style="margin-top: 54px;width: 920px;" >
 									<label style="margin-left: 87px;">密码登录</label>
-									<span style="margin-left: 74px;">已设置 <img  src="__PUBLIC__/images/zuo/ysz.png" style="margin-left: 5px;    margin-bottom: -4px;"/></span>
+									<span style="margin-left: 74px;">已设置
+										<img  src="__PUBLIC__/images/ysz.png" style="margin-left: 5px;    margin-bottom: -4px;"/>
+									</span>
 									<div style="margin-left: 369px;margin-top: -20px;width:500px;float: left">安全性高的密码可以使账户更安全,建议您定期更换密码,且设置一个包含数字<br>母,并长度超过6位以上的密码。</div>
 									
 								</div>
 
-
 								<div style="border-bottom: 1px dashed #ccc;width:850px;margin-left:87px"></div>
 								<div class="control-group clearfix" style="margin-top: 40px;width: 920px;">
 									<label style="margin-left: 87px;">手机号码</label>
-									<span  style="margin-left: 74px;">已绑定 <img  src="__PUBLIC__/images/zuo/ysz.png" style="margin-left: 5px;    margin-bottom: -4px;"/></span>
+									<eq name="isMobile" value="1">
+										<span style="margin-left: 74px;">已绑定
+											<img  src="__PUBLIC__/images/ysz.png" style="margin-left: 5px;    margin-bottom: -4px;"/>
+										</span>
+									</eq>
+
+									<eq name="isMobile" value="0">
+										<span style="margin-left: 74px;"><font color="#F00">未绑定</font>
+											<img  src="__PUBLIC__/images/xsz.png" style="margin-left: 5px;    margin-bottom: -4px;"/>
+										</span>
+									</eq>
 									<div style="margin-left: 369px;margin-top: -20px;width:500px;float: left">绑定手机后，您即可享受Luxury Watches丰富的手机服务，如手机找回密码等。<br>&nbsp;</div>
 									
 								</div>
@@ -76,11 +83,12 @@
 								<div style="border-bottom: 1px dashed #ccc;width:850px;margin-left:87px"></div>
 								<div class="control-group clearfix" style="margin-top: 40px;width: 920px;">
 									<label style="margin-left: 87px;">电子邮箱</label>
-									<span  style="margin-left: 74px;">已绑定 <img  src="__PUBLIC__/images/zuo/ysz.png" style="margin-left: 5px;    margin-bottom: -4px;"/></span>
+									<span style="margin-left: 74px;">已绑定
+										<img  src="__PUBLIC__/images/ysz.png" style="margin-left: 5px;    margin-bottom: -4px;"/>
+									</span>
 									<div style="margin-left: 369px;margin-top: -20px;width:500px;float: left">绑定邮箱后，您即可享受Luxury Watches丰富的邮件服务，如邮箱找回密码、优惠活动推送等。<br>&nbsp;</div>
 									
 								</div>
-
 								<!-- <div style="border-bottom: 1px dashed #ccc;width:850px;margin-left:87px"></div> -->
 							</form>
 						</div>
