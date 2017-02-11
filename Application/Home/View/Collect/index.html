@@ -2,7 +2,11 @@
 <block name="main">
 	<head>
 		<meta charset="utf-8">
-
+		<link rel="stylesheet" href="__PUBLIC__/css/css.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/ms-style.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/personal_member.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/Snaddress.min.css" />
 	</head>
 
 	<body class="ms-body">
@@ -17,14 +21,24 @@
 						<font style="font-size: 16px;color: #565656; margin-left:35px;">我的收藏</font>
 						<hr style=" border-style:solid;width: 1200px;border-color:#D3D3D3;float:right;"> </hr>
 						  <div style="float: left;padding: 10px;margin-left: 10px;">
-							<img src="img/宝贝收藏/组-56.png" style="min-width: 150px;" />
+							<!-- <img src="img/宝贝收藏/组-56.png" style="min-width: 150px;" />
 							<br />
 							<span style="color: #686868;">21cake21客蛋糕朗姆之...</span>
 							<br />
 							<span style="color: #686868;margin-top: 23px;display:block;margin-left: 50px;">
-								<font style="font-size:14px;color:#fb3201; font-weight: bold;">￥126</font></span>
+								<font style="font-size:14px;color:#fb3201; font-weight: bold;">￥126</font></span> -->
+								<foreach name='info' item='value'>
+										<div style="float:left ;">
+											<a href="__MODULE__/Details/index?id={$value['pid']}" class="mask">
+												<img src="__PUBLIC__/admin/Uploads/Products/{$value['picurl']}" style="margin-top: 10px;height: 150px;width: 110px;float: left;"/>	
+												<br />
+												<span style="display: block;float: center;margin-left: 10px;color: #f78642;font-size: 16px;">¥ {$value['price']}</span>
+												<div style="float: center;height: 20px;margin-left: 10px;">库存量{$value['stock']}</div>
+												<p style="margin-left:10px;width: 100px;font-size: 12px;color: #686868">{$value['title']}</p>
+											</a>
+										</div>
+								</foreach>
 						</div>
-						
 					</div>
 
 				<div style="margin-top: 20px;width: 1050px;float:right;">
@@ -32,15 +46,17 @@
                         
                        <hr style=" border-style:solid;width:1050px;border-color:#D3D3D3;margin-top: 20px;"> </hr>
                        <div style="float: left;margin-top: 20px;text-align: center; ">
-											<img src="img/购物车/图层-285.png" style="min-width: 150px;" />
-											<br />
-											<span><font style="color: #F2873B;font-size: 16px; font-weight: bold;">￥237.00</font></span>
-											<span style="background-color: #F37B1D;margin-left: 100px;padding-left: 2px;padding-right: 2px;"><font style="color: #F0F0F0;font-size: 12px; font-weight: bold;">包邮</font></span>
-											<br />
-											<span style="color: #565656;">匹考克甜品peacocakecupcake下午茶</span>
-											<br />
-											<span style="display:inline;margin-top: 5px;"><font style="color: #686868;font-size: 12px; ">销量:996</font></span>
-											<span style="display:inline ;background-color: #00DB00;margin-left: 100px;padding-left: 2px;padding-right: 2px;"><font style="color: #F0F0F0;font-size: 12px; font-weight: bold;">新品上市</font></span>
+							<foreach name='info1' item='value'>
+										<div style="float:left ;">
+											<a href="__MODULE__/Details/index?id={$value['pid']}" class="mask">
+												<img src="__PUBLIC__/admin/Uploads/Products/{$value['picurl']}" style="margin-top: 10px;height: 150px;width: 110px;float: left;"/>	
+												<br />
+												<span style="display: block;float: center;margin-left: 10px;color: #f78642;font-size: 16px;">¥ {$value['price']}</span>
+												<div style="float: center;height: 20px;margin-left: 10px;">库存量{$value['stock']}</div>
+												<p style="margin-left:10px;width: 100px;font-size: 12px;color: #686868">{$value['title']}</p>
+											</a>
+										</div>
+								</foreach>				
                        </div>
                
 				</div>
@@ -97,6 +113,5 @@
 				width: 100%;
 			}
 		</style>
-		<script type="text/javascript " src="js/safe/ms_common.min.js "></script>
 	</body>
 </block>

@@ -38,8 +38,16 @@
                         -> where("`uid` = $uid")
                         -> limit(2)
                         -> select();
+           //$uid = $_SESSION['user']['uid'];
+            $mod = M("collect");
+            $res1 = $mod ->join('product ON collect.pid = product.pid')
+                         ->join('products_details ON collect.pid = products_details.pid')
+                         ->where("`uid` = $uid")
+                         ->limit(2)
+                         ->select();         
             $num = shopCartNum($_SESSION['user']['uid']);
             $this -> assign('num',$num);
+            $this -> assign('res1',$res1);
             $this -> assign('res',$res);
             $this -> assign('info',$info);
             $this -> assign("info1",$info1);

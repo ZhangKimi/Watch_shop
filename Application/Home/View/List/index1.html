@@ -64,16 +64,12 @@
     </div>
     <div id="box">
 	    <div class="plist">
-			<div class="product-one">
-				<if condition="$pinfo eq $value.pid">
-				<foreach name="$info" item="res">
-					{$res.title}
-				</foreach>
-			</if>
-			<foreach name="res" item="value"> 
+			<div class="product-one">	
+			<foreach name="info" item="value"> 
 				<div class="col-md-3 product-left">
 					<div class="product-main simpleCart_shelfItem">
-						<a href="__MODULE__/Details" class="mask"><img class="img-responsive zoom-img" src="___PUBLIC__/admin/Uploads/Products/{$value['picurl']}" alt="" /></a>
+						<a href="__MODULE__/Details/index?id={$value['pid']}" class="mask"><img class="img-responsive zoom-img" 
+						src="__PUBLIC__/admin/Uploads/Products/{$value['picurl']}" alt="" /></a>
 						<div class="product-bottom">
 							<h3>{$value['title']}</h3>
 							<p>库存量 {$value['stock']}</p>
