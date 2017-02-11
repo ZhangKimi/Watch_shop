@@ -3,16 +3,11 @@
 	use Think\Controller;
 	class EditpwdController extends Controller {
 		public function index() {
-
+			
 			if(!$_SESSION['user']) {
 				$this -> error("请先登录", __MODULE__."/Login",2);
 			}
-
-			$this -> assign("shopNum", shopCartNum($_SESSION['user']['uid']));
-		    // 显示导航栏
-			$this -> assign("list", displayFirst());
-        	$this -> assign("result", displaySecond());
-        	$this -> assign("username", $_SESSION['user']['username']." 欢迎回来");
+			
 			$this -> display("stepone");
 		}
 
