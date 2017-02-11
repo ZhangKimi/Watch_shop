@@ -23,7 +23,22 @@
 	    }
         
 	    public function addOne() {
+	        
 	        $db = M("cart");
+	        $value = $db -> where("pid={$_POST['pid']}") -> select(); 
+	        if($value){
+	            $num=$value[0]['num']+1;
+	            $map['cid'] = $value[0]['cid'];
+	            $map['num'] = $num;
+	            $val = $db -> save($map);
+	            if($val){
+	                die('1');
+	            }else{
+	                die('0');
+	            }
+	        }else{
+	        $pid = $_POST['pid'];
+	        
 	        $data['uid'] = $_SESSION['user']['uid'];
 	        $data['pid'] = $_POST['pid'];
 	        $data['num'] = 1;
@@ -31,23 +46,36 @@
 	        $data['price'] = $_POST['price'];
 	        $data['name'] = $_POST['name'];
 	        $data['bid'] = $_POST['bid'];
+	        
 	        $result = $db -> add($data);
-	        if($result) {
-	        	$res = reduceStock($data['pid'], 1);
-	        	if($res) {
-	        		die('1');
-	        	}else {
-	        		die('0');
-	        	}
-	        }else {
-	        	die('0');
+    	        if($result) {
+    	        	$res = reduceStock($data['pid'], 1);
+    	        	if($res) {
+    	        		die('1');
+    	        	}else {
+    	        		die('0');
+    	        	}
+    	        }else {
+    	        	die('0');
+    	           }
 	        }
 	    }
 	    public function addDuo(){
 	        
 	        $db = M("cart");
+	        $value = $db -> where("pid={$_POST['pid']}") -> select();
+	        if($value){
+	            $num=$value[0]['num']+$_POST['num'];
+	            $map['cid'] = $value[0]['cid'];
+	            $map['num'] = $num;
+	            $val = $db -> save($map);
+	            if($val){
+	                die('1');
+	            }else{
+	                die('0');
+	            }
+	        }else{
 
-	 /*        die(dump($_POST)); */
 	        $data['uid'] = $_SESSION['user']['uid'];
 	        $data['pid'] = $_POST['pid'];
 	        /* $data['pid'] = $_POST['pid']; */
@@ -65,7 +93,7 @@
             }else {
                 die('0');
             }
-	      
+	        }
 	    }
 	    public function cartDel() {
 	    	$cid = $_GET['id'];
@@ -92,7 +120,7 @@
 	        if($_POST['num'] < 1){
 	            echo "3";die;
 	        }
-	        
+	        //即使更新购物车数量setField
 	        if($m->where("cid={$_POST['order_id']}")->setField("num",$_POST['num'])){
 	            echo "1";die;
 	        }else{

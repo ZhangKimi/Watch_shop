@@ -111,27 +111,29 @@
             <div class="liutext"><em>5</em><br /><strong>订单完成</strong></div>
         </div>
     </div>
-    <!-- <form action="" method="POST" onclick="fun()"> -->
+    <form action="__MODULE__/MyOrder/add" method="POST">
+    			
     <div id="recaddress" align="center">
         <h3 style="text-align: left; margin-left: 120px;">收货地址</h3>
       
         <table cellspacing="0" cellpadding="10" width="82%">
          	<foreach name='add' item="value">
-         	<input type="hidden" name='add_id' value={$value['id']} />
+         	<!-- <input type="hidden" name='add_id' value={$value['id']} /> -->
             <tr style="margin:2px">
                 <td style="width: 10px;">
+                <!-- 选取地址，根据按钮选出地址表中的对应ID然后通过form表单传过去 -->
                 <!-- <input type="radio" name="recaddr" class="xuanze" value="0"/>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']} -->
-                     <input type="radio" name="recaddr" class="xuanze" value="{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}" id="addre"/>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}
+                     <input type="radio" onclick="address(this)" name="recaddr" class="xuanze" value="{$value['id']}" id="addre"/>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}
                 </td>
                 
                 
                 <!-- <td style="width: 700px;">
                     <label>{$value['rname']} {$value['province']} {$value['city']} {$value['area']} {$value['addr']} {$value['postcode']} {$value['mobile']}</label>
                 </td> -->
-                		<input type="hidden" name="rname" id="rname" value="{$value['rname']}" />
-     					<!-- <input type="hidden" id="addre" value="{$value['province']}{$value['city']}{$value['area']}{$value['addr']}" /> -->
+                		<!-- <input type="hidden" name="rname" id="rname" value="{$value['rname']}" />
+     					<input type="hidden" id="addre" value="{$value['province']}{$value['city']}{$value['area']}{$value['addr']}" />
      					<input type="hidden" name="rpostcode" id="postcode" value="{$value['postcode']}" />
-                		<input type="hidden" name="mobile" id="mobile" value="{$value['mobile']}" />
+                		<input type="hidden" name="mobile" id="mobile" value="{$value['mobile']}" /> -->
             </tr>
             
             </foreach>
@@ -142,7 +144,7 @@
             </tr>
             </table>
             </div>
-           <!--  </form> -->
+           
            
     <div class="cart">
      	<div id="shoplist" align="center">
@@ -160,10 +162,10 @@
      			<tr class="list" pro="{$value['id']}">
      				
      				<td style="padding-left: 10px;">
-     					<input type="hidden" id="name" name="name" value="{$value['name']}" />
-     					<!-- <input type="hidden" id="price" value="{$value['price']}*{$value['num']}" /> -->
+     					<!-- <input type="hidden" id="name" name="name" value="{$value['name']}" />
+     					<input type="hidden" id="price" value="{$value['price']}*{$value['num']}" />
      					<input type="hidden" id="num" name="num" value="{$value['num']}" />
-     					<input type="hidden" id="pid" name="pid" value="{$value['pid']}" />
+     					<input type="hidden" id="pid" name="pid" value="{$value['pid']}" /> -->
      					
 						<img src="__PUBLIC__/admin/Uploads/Products/{$value['pic']}" width="45px" />
 						<span id="title">{$value['name']}</span>
@@ -188,33 +190,47 @@
      		<div style="margin-left:-652px">
 				<div class="a1">
 	            	<ul>
-	            		<li class="kuang1" value="1" bank="网易支付" style="background:url('__PUBLIC__/images/9999.png')"></li>
-	            		<li class="kuang1" value="2" bank="微信支付" style="background:url('__PUBLIC__/images/wx.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="1" bank="网易支付" style="background:url('__PUBLIC__/images/9999.png')"></li>
+	            		<li class="kuang1" onclick="zf(this)" value="2" bank="微信支付" style="background:url('__PUBLIC__/images/wx.png')"><span></span></li>
 	            		<li class="kuang1" id="qita">其他支付</li>
 	            	</ul>
             	</div>
             	<div class="a2" id="a2">
 	            	<ul>
-	            		<li class="kuang1" value="3" bank="招商银行" style="background:url('__PUBLIC__/images/0039.png')"><span></span></li>
-	            		<li class="kuang1" value="4" bank="建设银行" style="background:url('__PUBLIC__/images/0059.png')"><span></span></li>
-	            		<li class="kuang1" value="5" bank="中国银行" style="background:url('__PUBLIC__/images/0060.png')"><span></span></li>
-	            		<li class="kuang1" value="6" bank="中国建设银行" style="background:url('__PUBLIC__/images/0061.png')"><span></span></li>
-	            		<li class="kuang1" value="7" bank="中国民生银行" style="background:url('__PUBLIC__/images/0069.png')"><span></span></li>
-	            		<li class="kuang1" value="8" bank="中国工商银行" style="background:url('__PUBLIC__/images/0071.png')"><span></span></li>
-	            		<li class="kuang1" value="9" bank="中信银行" style="background:url('__PUBLIC__/images/0206.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="3" bank="招商银行" style="background:url('__PUBLIC__/images/0039.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="4" bank="建设银行" style="background:url('__PUBLIC__/images/0059.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="5" bank="中国银行" style="background:url('__PUBLIC__/images/0060.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="6" bank="中国建设银行" style="background:url('__PUBLIC__/images/0061.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="7" bank="中国民生银行" style="background:url('__PUBLIC__/images/0069.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="8" bank="中国工商银行" style="background:url('__PUBLIC__/images/0071.png')"><span></span></li>
+	            		<li class="kuang1" onclick="zf(this)" value="9" bank="中信银行" style="background:url('__PUBLIC__/images/0206.png')"><span></span></li>
 	            		<li class="kuang1"><span></span></li>
 	            		<li class="kuang1"><span></span></li>
 	            	</ul>
             	</div>
             	</div>
+            	<input type="hidden" id="zf" name="fk" value=""/>
      		<div id="footer">
 				<span class="label label-default" id="backbtn">返回首页</span>
-				<span type="submit" class="label label-danger" id="pay" onclick="fun()">提交订单</span>
+				<input type="submit" class="label label-danger" id="pay" value="提交订单">
  			</div>
      	</div>
+     		
      	</form>
      	
      	<script>
+     	function address(obj){
+     		/* alert($(obj).val()); */
+     		$('#addre').val($(obj).val());
+     		/* alert($('#addre').val()); */
+     		
+     	}
+     	function zf(obj){
+     		/* alert($(obj).attr('value')); */
+     		$('#zf').val($(obj).attr('value'));
+     		/* alert($('#zf').val()); */
+ 
+     	}
      	
      	
 		$("#total").html(showTotalPrice()+".00");

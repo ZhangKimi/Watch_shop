@@ -73,6 +73,47 @@
 		        <div class="liutext"><em>5</em><br /><strong>订单完成</strong></div>
 	        </div>
      	</div>
+     	<div class="cart">
+     	<div id="shoplist" align="center">
+     		<table cellspacing="0" cellpadding="10" width="85%">
+     			<tr bgcolor="#F2F2F2" style="height: 35px;">
+     				
+     				<th style="padding-left: 10px; width: 500px;">商品名称</th>
+     				<th style="text-align:center; width: 120px;">价格(元)</th>
+     				<th style="text-align:center; width: 160px;">数量</th>
+     				<th style="text-align:center;">小计(元)</th>
+     				
+     			</tr>
+     			<!--此处遍历商品 -->
+     			<foreach name="info" item="value">
+     			<tr class="list" pro="{$value['id']}">
+     				
+     				<td style="padding-left: 10px;">
+     					<!-- <input type="hidden" id="name" name="name" value="{$value['name']}" />
+     					<input type="hidden" id="price" value="{$value['price']}*{$value['num']}" />
+     					<input type="hidden" id="num" name="num" value="{$value['num']}" />
+     					<input type="hidden" id="pid" name="pid" value="{$value['pid']}" /> -->
+     					
+						<img src="__PUBLIC__/admin/Uploads/Products/{$value['pic']}" width="45px" />
+						<span id="title">{$value['name']}</span>
+						<br /><span id="attribute"><label>品牌:</lable>{$value['bname']}</span>
+     				</td>
+     				<td align="center" class="price" proID="{$value['id']}">{$value['price']}</td>
+     				<td align="center"> 
+     				{$value['num']} 
+     				</td>
+     				<td id="showTotal" align="center" proID="{$value['id']}" class="tTotal">{$value['num']*$value['price']}</td>
+     				
+     			</tr>
+     			</foreach>
+     			<tr style="height: 80px;" bgcolor="#F2F2F2">
+     				
+     				<td colspan="3"><a href="#"></a></td>
+     				<td colspan="2" style="padding-left: 10px; padding-right: 10px;" align="right" valign="middle">
+     					
+ 					</td>
+     			</tr>
+     		</table>
      		
           <!--  <div class="" >
                 <ul class="">

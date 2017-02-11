@@ -50,16 +50,16 @@
                                         <td name="ordernumber">{$value['ordernumber']}</td>
                                         <td>{$value['phone']}</td>
                                         <td>{$value['addr']}</td>
-                                        <td><eq name="value['paymethod']" value="1">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="2">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="3">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="4">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="5">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="6">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="7">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="8">网易支付</eq></td>
-                                        <td><eq name="value['paymethod']" value="9">网易支付</eq></td>
-                                        <td>{$value['ordertime']}</td>
+                                        <td><eq name="value['paymethod']" value="1">网易支付</eq>
+                                        <eq name="value['paymethod']" value="2">微信支付</eq>
+                                        <eq name="value['paymethod']" value="3">招商银行</eq>
+                                        <eq name="value['paymethod']" value="4">交通银行</eq>
+                                        <eq name="value['paymethod']" value="5">中国银行</eq>
+                                        <eq name="value['paymethod']" value="6">中国建设银行</eq>
+                                        <eq name="value['paymethod']" value="7">中国民生银行</eq>
+                                        <eq name="value['paymethod']" value="8">中国工商银行</eq>
+                                        <eq name="value['paymethod']" value="9">中信银行</eq></td>
+                                        <td>{$value['paytime']|date="Y-m-d H:i:s",###}</td>
                                         <td>
                                         <eq name="value['state']" value="0">新订单</eq>  
                                         <eq name="value['state']" value="1">已发货</eq>  
@@ -67,7 +67,7 @@
                                         <eq name="value['state']" value="3">无效订单</eq>  
                                         </td>
                                         <td>
-                                        <a href="__MODULE__/Orderdetails/sele?id={$value['uid']}&name={$value['name']}" target="_self">订单详情</a>
+                                        <a href="__MODULE__/Orderdetails/index?id={$value['id']}" target="_self">订单详情</a>
                                         
                                         </td>
                                     </tr>

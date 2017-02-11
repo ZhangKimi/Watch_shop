@@ -111,7 +111,6 @@
 		             switch(data)
 		                 {
 		                    case "1":
-		                
 		                    break;
 		                    case "0":
 		                    swal('添加失败！')
@@ -133,9 +132,9 @@
 	    		$("#total").html(showTotalPrice()+".00");
 		  	});
 		  	$("#reduce[proID]").on('click', function() {
-		  		var proNum = $(this).attr("proID");
-		  		var order_id = $(this).attr("cid");
-				var	pid_id = $(this).attr("pid");
+		  		var proNum = $(this).attr("proID");//数量
+		  		var order_id = $(this).attr("cid");//购物车ID
+				var	pid_id = $(this).attr("pid");//商品ID
 				var num = parseInt($("input[proID ='"+proNum+"']").val())-1;
 				 $.ajax({
 		        url:"__MODULE__/Cart/add_num",
@@ -155,7 +154,6 @@
 		             switch(data)
 		                 {
 		                    case "1":
-		                
 		                    break;
 		                    case "0":
 		                    swal('添加失败！')
@@ -173,10 +171,6 @@
 		                 swal('失败','index')
 		            }
 		              });
-		  		
-		  		
-		  		
-		  		
 		  		if($("input[proID ='"+proNum+"']").val() > 1){
 		    		$("input[proID ='"+proNum+"']").val( parseInt($("input[proID = '"+proNum+"']").val(), 10) - 1);
 		    		$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));
@@ -185,7 +179,7 @@
 		  	});
 		  	$("input[proID]").blur(function() {
 		  		var proNum = $(this).attr("proID");
-		  		alert(proNum);
+		  		/* alert(proNum); */
 		  		if(!($("input[proID = '"+proNum+"']").val()) || $("input[proID = '"+proNum+"']").val() == 0){
 		  			$("input[proID = '"+proNum+"']").val(1);
 		  			$("#showTotal[proID = '"+proNum+"']").html(parseInt($(".price[proID = '"+proNum+"']").html()) * parseInt($("input[proID = '"+proNum+"']").val()));

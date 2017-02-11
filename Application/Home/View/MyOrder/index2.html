@@ -1,0 +1,108 @@
+<extend name="tpl/template" />
+<block name="main">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>支付成功</title>
+        <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+        <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+        <!--  <link rel="shortcut icon" href="__PUBLIC__/admin/favicon.ico"> -->
+        <!-- <link href="__PUBLIC__/admin/css/bootstrap.min.css?v=3.3.5" rel="stylesheet"> -->
+        <link href="__PUBLIC__/admin/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+        <link href="__PUBLIC__/admin/css/animate.min.css" rel="stylesheet">
+        <link href="__PUBLIC__/admin/css/style.min.css?v=4.0.0" rel="stylesheet">
+        <div class="register">
+			<div class="container">
+				<div class="register-top heading">
+					<img src="__PUBLIC__/images/success.gif" width="50px" style="float: left;margin-left: 30px;">
+					<h2 style="float:left;margin-top: 13px;">恭喜您 , 支付成功！感谢您光顾精品腕表商城 您的购买的商品我们将尽快安排发货</h2>
+				</div>
+	        <div class="wrapper wrapper-content animated fadeInRight">
+	            <div class="row">
+	                <div class="col-sm-12">
+	                    <div class="ibox-content p-xl">
+	                        <div class="row">
+	                            <div class="col-sm-6">
+	                                <address>
+	                                    <strong>精品腕表商城</strong><br>
+	                                    沈阳市沈北新区蒲昌路19号阳光经典大厦4楼<br>
+	                                    <abbr title="Phone">客服电话：</abbr> +86 155-2419-2580
+	                                </address>
+	                            </div>
+							
+	                            <div class="col-sm-6 text-right">
+	                                <h4>订单编号：</h4>
+	                                
+	                                <h4 class="text-navy">{$info['ordernumber']}</h4>
+	                                <address>
+	                                    <strong>{$info['name']}</strong><br>
+	                                    {$info['addr']}<br>
+	                                    <abbr title="Phone">手机号码：</abbr> +86 {$info['phone']}
+	                                </address>
+	                                <p>
+	                                    <span><strong>订单日期：</strong> {$info['paytime']|date="Y-m-d H:i:s",###}</span>
+	                                </p>
+	                            </div>
+	                        </div>
+	
+	                        <div class="table-responsive m-t">
+	                            <table class="table invoice-table">
+	                                <thead>
+	                                    <tr>
+	                                        <th>商品名字</th>
+	                                        <th>数量</th>
+	                                        <th>单价</th>
+	                                        <th>总价</th>
+	                                    </tr>
+	                                </thead>
+	                                
+	                                <foreach name="orderDetails" item="value"> 
+	                                    <tr>
+	                                        <td>
+	                                        	<strong>{$value['name']}</strong>
+	                                        </td>
+	                                        
+	                                        <td>{$value['num']}</td>
+	                                        <td>&yen;{$value['price']}.00</td>
+	                                        <td>&yen;<span class="tTotal">{$value['num']*$value['price']}</span>.00</td>
+	                                        
+	                                    </tr>
+	                                    </foreach> 
+	                                
+	                            </table>
+	                        </div>
+	                        </foreach>
+	                      
+	
+	                        <table class="table invoice-total">
+	                            <tbody>
+	                                <tr>
+	                                    <td><strong>总计</strong>
+	                                    </td>
+	                                    <td >&yen; <label id="showTotal"></label></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+	
+	                        <div class="well m-t"><strong>注意：</strong> 请在发货7日内完成确认收货，否则订单会自动确认收货。
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </div>
+        
+        <!-- <script src="__PUBLIC__/admin/js/jquery.min.js?v=2.1.4"></script> -->
+        <script src="__PUBLIC__/admin/js/bootstrap.min.js?v=3.3.5"></script>
+        <script>
+		
+		var moneyObj = document.getElementsByClassName('tTotal');
+		var showTotal = document.getElementById("showTotal");
+		var money = 0;
+		for(var i = 0;i < moneyObj.length;i++) {
+			money += Number(moneyObj[i].innerHTML);
+		}
+		showTotal.innerHTML = money+".00";
+        </script>
+</block>
