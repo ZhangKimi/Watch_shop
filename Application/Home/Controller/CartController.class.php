@@ -18,6 +18,16 @@
           	for($j = 0; $j < count($info);$j++) {
                 $info[$j]['id'] = $j + 1;
           	}
+          	 $mod = M("products_details");
+            // 用商品pid 品牌bid 将商品详情表与商品表和品牌表连接
+            $info1 = $mod -> join('product ON products_details.pid = product.pid')
+                        -> join('brand ON products_details.brandid = brand.id')
+                        // 查询前8条数据
+                        -> limit(0,5)
+                        // 执行查询
+                        -> select();
+            // 将商品信息发送至前台
+            $this -> assign('info1',$info1);
           	$this -> assign("info", $info);
           	$this -> display("index");
 	    }

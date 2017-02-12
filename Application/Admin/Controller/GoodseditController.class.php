@@ -13,7 +13,7 @@
         public function edit()
     {
         $mod = M ("products_details");
-        $info = $mod -> join('product ON products_details.pid = product.pid') 
+        $info = $mod -> join('product ON products_details.pid = product.pid')
                      -> find($_GET['id']);
         $this->assign('info', $info);
          $db = M('type');
@@ -42,52 +42,55 @@
             $this -> assign("brandOption", $string);
             $this -> display('index');
     }
-    //     public function update{
-    //         $mod = M('products_details');     
-    //         $mod -> join('product ON products_details.pid = product.pid')
-    //              -> join('type ON products_details.typeid = type.pid')
-    //              -> join("brand ON products_details.brandid = brand.id")
-    //              -> create();
-    //         if(($mod->save()))
-    //         {
-    //         $this->success("修改成功", "../Goodsupdate/index" );
-    //         }else{
-    //         $this->error("修改失败", "edit?id={$_GET['id']}");
-    //         }
-    // }
-        public function update() {
-            $data['pid'] = $_POST['pid'];
-            $data['title'] = $_POST['title'];
-            $data['stock'] = $_POST['stock'];
-            $data['inputer'] = $_SESSION['admin']['username'];
-            $data['price'] = $_POST['price'];
-            $data['preprice'] = $_POST['preprice'];
-            // $db = M('product');
-            // $result = $db -> save($data); 
-            // if($result){
-            // $pid = $result;
-            //$inf['pid'] = $_POST['pid']; 
-            $inf['typeid'] = $_POST['typeid'];
-            $inf['brandid'] = $_POST['brandid'];
-            $inf['hot'] = $_POST['hot'];
-            $inf['depreciate'] = $_POST['depreciate'];
-            $inf['commend'] = $_POST['commend'];
-            $inf['discount'] = $_POST['discount'];
-            $inf['offsale'] = $_POST['offsale'];
-            $inf['hits'] = 0;
-            $inf['picurl'] = $_POST['picurl']; 
-            $inf['picurls'] = $_POST['picurls'];
-            $inf['contents'] = $_POST['contents'];
-            $mod = M('product');
-            $result = $mod -> where("'pid' = '{$pid}'")->save($data);  
-            $mod = M('products_details');
-            $res = $mod ->where("'pid' = {$pid}'")->save($inf);
+        public function update(){
+            $mod = M('products_details');     
+            $mod -> join('product ON products_details.pid = product.pid')
+                 -> join('type ON products_details.typeid = type.pid')
+                 -> join("brand ON products_details.brandid = brand.id")
+                 -> create();
             if(($mod->save()))
             {
-            $this->success("修改成功", "../Goodsupdate/index");
+            $this->success("修改成功", "../Goodsupdate/index" );
             }else{
             $this->error("修改失败", "edit?id={$_GET['id']}");
             }
-          }
+    }
+        // public function update() {
+        //     $data['pid'] = $_POST['pid'];
+        //     $data['title'] = $_POST['title'];
+        //     $data['stock'] = $_POST['stock'];
+        //     $data['inputer'] = $_SESSION['admin']['username'];
+        //     $data['price'] = $_POST['price'];
+        //     $data['preprice'] = $_POST['preprice'];
+        //     $inf['typeid'] = $_POST['typeid'];
+        //     $inf['brandid'] = $_POST['brandid'];
+        //     $inf['hot'] = $_POST['hot'];
+        //     $inf['depreciate'] = $_POST['depreciate'];
+        //     $inf['commend'] = $_POST['commend'];
+        //     $inf['discount'] = $_POST['discount'];
+        //     $inf['offsale'] = $_POST['offsale'];
+        //     $inf['hits'] = 0;
+        //     $inf['picurl'] = $_POST['picurl']; 
+        //     $inf['picurls'] = $_POST['picurls'];
+        //     $inf['contents'] = $_POST['contents'];
+        //     //dump($data['pid']);
+        //     $mod = M('product');
+        //     $result = $mod -> find($data['pid']);
+        //     //$result['id'] = $_POST['id'];
+        //      if(($mod->save()))
+        //     {
+        //     $this->success("修改成功", "../Goodsupdate/index");
+        //     }else{
+        //     $this->error("修改失败", "edit?id={$_GET['id']}");
+        //     }
+        //     $mod1 = M('products_details');
+        //     $res = $mod1 ->find($data['pid']);
+        //     if(($mod1->save()))
+        //     {
+        //     $this->success("修改成功", "../Goodsupdate/index");
+        //     }else{' '
+        //     $this->error("修改失败", "edit?id={$_GET['id']}");
+        //     }
+        //   }
         }
     
