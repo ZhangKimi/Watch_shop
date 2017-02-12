@@ -102,7 +102,15 @@
 								      	<td>{$value.addr}</td>
 								      	<td>{$value.postcode}</td>
 								      	<td>{$value.mobile}</td>
-								      	<td style="color: #007AFF;cursor: pointer;"><a did="{$value.id}">删除</a></td>
+								      	<td style="color: #007AFF;">
+								      		
+								      		<eq name="value.defa" value="0">
+								      			<a did="{$value.id}" style="cursor: pointer;">删除</a>
+							      			</eq>
+							      			<eq name="value.defa" value="1">
+								      			<span style="cursor: default;">默认无法删除</span>
+							      			</eq>
+							      		</td>
 								      	<td >
 								      		<eq name="value.defa" value="0">
 								      			<span style="padding: 2px;font-size: 10px;color: #EC5937;border-radius:5px;background-color: #fad5d0;border: 1px #C85E0B solid; cursor: pointer;" sid="{$value.id}">设为默认</span>

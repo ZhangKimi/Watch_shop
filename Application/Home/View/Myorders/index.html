@@ -1,0 +1,254 @@
+<extend name="tpl/center" />
+	<block name="main">
+		<meta charset="utf-8">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<link rel="stylesheet" href="__PUBLIC__/css/css.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/common.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/ms-style.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/personal_member.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/Snaddress.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/css/sui.css" />
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.11.0.min.js" ></script>
+		<script type="text/javascript" src="__PUBLIC__/js/sui.js" ></script>
+		<style>
+			progress {
+				width: 300px;
+				border: 1px solid #ffffff;
+				background-color: #e6e6e6;
+				color: #0064B4;
+				/*IE10*/
+			}
+			
+			progress::-moz-progress-bar {
+				background: #FFFFFF;
+			}
+			
+			progress::-webkit-progress-bar {
+				background: #ccc;
+			}
+			
+			progress::-webkit-progress-value {
+				background: #FF7700;
+			}
+			a{
+				color: #000000;
+			}
+			.sui-table th, .sui-table td {
+			    padding: 16px 8px;
+			    line-height: 18px;
+			    text-align: center;
+			    vertical-align: middle;
+			    border-top: 1px solid #e6e6e6;
+			    
+			}
+	 	.sui-nav.nav-tabs > .active > a {
+		    border:1px #fff solid;
+		    background-color: #fff;
+		    border-bottom-color: transparent; 
+		    cursor: default;
+		    font-weight: normal;
+		    color: #F2873B;
+		}
+		.sui-nav.nav-tabs > li > a {
+		    color: #333333;
+		    line-height: 18px;
+		    -webkit-border-radius: 3px 3px 0 0;
+		    -moz-border-radius: 3px 3px 0 0;
+		    border-radius: 3px 3px 0 0;
+		    border: 1px #fff solid;
+		    border-bottom: 1px #fff solid;
+		    height: 30px;
+		    width: 80px;
+		    text-align: center;
+		    padding-top: 10px;
+		    font-size: 14px;
+		}
+		.sui-nav.nav-tabs {
+		    border-bottom: 1px solid #CECECE;
+		    padding-left: 5px;
+		}
+		/*.sui-nav.nav-tabs > .active > a:hover {
+			  font-weight: bold;
+		    cursor: default;
+		    font-weight: bold;
+		    color: #F37B1D;
+		}*/
+		.sui-nav.nav-tabs > li {
+		    margin-bottom: -1px;
+		     background-color: #fff; 
+		     border-bottom: 1px #ccc solid;
+		}
+		.sui-nav.nav-tabs > .active {
+		    border-bottom: 0;
+		}
+		.sui-nav.nav-tabs > li + li {
+		    margin-left: -3px;
+		}
+
+		.orders {
+			margin-top: 10px;
+			width: 100%;
+		}
+
+		.orders td, .orders th {
+			border: 1px solid #CCC;
+		}
+
+		.enter_btn {
+			width: 56px;
+			height: 23px;
+			display: block;
+			background: #65B5FF;
+			color: #FFF;
+			line-height: 23px;
+			font-size: 12px;
+			margin: 0px auto;
+		}
+		</style>
+	</head>
+
+	<body class="ms-body">
+		<div id="" class="ng-top-banner"></div>
+		<div class="cont-main">
+			<div class="main-wrap mt15" style="border: 0px;">
+			    <ul class="sui-nav nav-tabs" style="margin-top:0px;width: 1000px;margin-left: 30px;">
+					<li   style="margin-left: -5px;">
+						<a href="#profile" data-toggle="tab">所有订单<span style="margin-left: 20px;color: #ccc;">|</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="#profile" data-toggle="tab">待发货
+							<span style="margin-left: 20px;color: #ccc;">|</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="#profile" data-toggle="tab">待收货
+							<span style="margin-left: 20px;color: #ccc;">|</span>
+						</a>
+					</li>  
+				</ul>
+
+				<div style="margin-left: 30px;height: 25px;" >
+					<input  type="text"  placeholder="输入商品标题或者订单号进行搜索 " style="width: 200px;height: 25px;font-size: 12px;" />
+					<button style="height: 100%;margin-left: -5px;border: 1px #ccc solid;font-size: 12px;color:#353535;background-color: #f2f2f2;width: 100px;">订单搜索</button>
+				</div>
+						
+				<div class="tab-content" style="width: 1000px;margin-top: 10px;border:1px #fff solid; border-top:transparent;margin-left: 30px;">
+				  	<div id="index" class="tab-pane " style="padding: 40px 30px;"></div>
+				 	<div id="profile" class="tab-pane active" style="padding: 00px 00px;">
+						<table style="width: 100%;height: 50px;border: 1px #ccc solid;background-color: #fdfdfd; font-size: 12px;">
+							<tr>
+							 	<th style="color: #858585; width: 30%;">收货地址</th>
+							 	<th style="color: #858585; width: 15%;">收货人</th>
+							 	<th style="color: #858585; width: 15%;">联系电话</th>
+							 	<th style="color: #858585; width: 15%">支付方式</th>
+							 	<th style="color: #858585;">订单状态</th>
+							 	<th style="color: #858585;">订单状态</th>
+						 	</tr>
+						</table>
+						<foreach name="info" item="value">
+							<table border="1px" style="width: 100%; border: 1px solid #CCC; font-size: 14px;" cellspacing="0" cellpadding="10" class="orders" >
+								<tr>
+									<th align="left" colspan="7" style="height: 30px;background: #F5F5F5;font-weight: normal;padding-left: 10px;">订单日期: <span style="margin-right: 5px;">{$value.paytime|date="Y-m-d H:i:s", ###}</span> 订单编号: <span>{$value.ordernumber}</span></th>
+								</tr>
+									<tr style="height: 70px">
+										<td style="width: 30% ">
+											<span>{$value.addr}</span>
+										</td>
+										<td style="width: 15%;text-align: center;">{$value.name}</td>
+										<td style="width: 15%;text-align: center;">{$value.phone}</td>
+										<td style="width: 15%;text-align: center;">
+											<eq name="value.paymethod" value="1">网易支付</eq>
+	                                        <eq name="value.paymethod" value="2">微信支付</eq>
+	                                        <eq name="value.paymethod" value="3">招商银行</eq>
+	                                        <eq name="value.paymethod" value="4">交通银行</eq>
+	                                        <eq name="value.paymethod" value="5">中国银行</eq>
+	                                        <eq name="value.paymethod" value="6">中国建设银行</eq>
+	                                        <eq name="value.paymethod" value="7">中国民生银行</eq>
+	                                        <eq name="value.paymethod" value="8">中国工商银行</eq>
+	                                        <eq name="value.paymethod" value="9">中信银行</eq>
+										</td>
+										<td style="text-align: center;width: 15%">
+											<eq name="value.state" value="0"><span>买家已付款</span></eq>  
+	                                        <eq name="value.state" value="1"><span>已发货</span></eq>  
+	                                        <eq name="value.state" value="2"><span>待收货</span></eq> 
+										</td>
+										<td style="text-align: center;">
+											<span><a href="__MODULE__/MyOrder/success?center=center&id={$value.id}">订单详情</a></span>
+											<eq name="value.state" value="1">
+												<span class="enter_btn" oid="">确认收货</span>
+											</eq>
+										</td>
+									</tr>
+							</table>
+						</foreach>
+
+						<div style="width: 100%;height: 0px;padding: 10px;"></div>
+				 		<p style="text-align:right;margin-top: 10px;width: 100%;">
+					    	<span class="fenye" style="cursor: pointer;">&lt;</span>
+				    		<span class="fenye" style="margin-left: 10px; cursor: pointer;">1</span>
+				    		<span class="fenye" style="cursor: pointer;">2</span>
+				    		<span class="fenye" style="cursor: pointer;">3</span>.....
+				    		<span class="fenye" style="cursor: pointer; margin-right: 10px;">&gt;</span>共1页，跳转到
+				    		<input type="text" value="1" style="width: 20px;margin-left: 10px;margin-right: 10px;" />页
+				    		<button  style="background-color: #f95555;padding: 3px;border: 0px;color: #fff;margin-left: 10px;width: 50px;border-radius:4px;">确认</button>
+			    		</p>
+					</div>
+			    </div>		 			  	
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="ng-footer">
+			<textarea class="footer-dom" id="footer-dom-02"></textarea>
+			<div class="ng-fix-bar"></div>
+		</div>
+		<style type="text/css">
+			.fenye{
+				    border: 1px #ccc solid;
+				     padding: 3px; 
+				    width: 20px;
+			}
+			.ng-footer {
+				height:514px;
+				margin-top: 0;
+			}
+			
+			.ng-s-footer {
+				height: 130px;
+				background: none;
+				text-align: center;
+			}
+			
+			.ng-s-footer p.ng-url-list {
+				height: 25px;
+				line-height: 25px;
+			}
+			
+			.ng-s-footer p.ng-url-list a {
+				color: #666666;
+			}
+			
+			.ng-s-footer p.ng-url-list a:hover {
+				color: #f60;
+			}
+			
+			.ng-s-footer .ng-authentication {
+				float: none;
+				margin: 0 auto;
+				height: 25px;
+				width: 990px;
+				margin-top: 5px;
+			}
+			
+			.ng-s-footer p.ng-copyright {
+				float: none;
+				width: 100%;
+			}
+			
+			.root1200 .ng-s-footer p.ng-copyright {
+				width: 100%;
+			}
+		</style>
+	</body>
+</block>

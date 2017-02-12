@@ -235,7 +235,7 @@ a.ng-close em {
 	width: 100%;
 	min-width: 990px;
 	border-bottom: 1px solid #eee;
-	background: #fff;
+	background: #f5f5f5;
 	*margin-top: -1px
 }
 
@@ -1175,7 +1175,7 @@ a.ng-close em {
 	display: block;
 	height: 16px;
 	width: 16px;
-	/*background: url(images/npbg.png?v=2015102601) no-repeat;*/
+	background: url(images/npbg.png?v=2015102601) no-repeat;
 	right: -18px;
 	top: 3px;
 	overflow: hidden
@@ -1483,7 +1483,7 @@ a.ng-close em {
 	height: 25px;
 	width: 120px;
 	margin: 0 auto;
-	/*background: url(images/npbg.png?v=2015102601) 0 -221px no-repeat*/
+	background: url(images/npbg.png?v=2015102601) 0 -221px no-repeat
 }
 
 .ng-bottom-fixed .ng-slide-box-code .wb-box a.follow {
@@ -1491,7 +1491,7 @@ a.ng-close em {
 	height: 30px;
 	width: 80px;
 	margin: 20px auto 0;
-	/*background: url(images/npbg.png?v=2015102601) -120px -205px no-repeat*/
+	background: url(images/npbg.png?v=2015102601) -120px -205px no-repeat
 }
 
 .ng-bottom-fixed .ng-slide-box-life {
@@ -1559,7 +1559,7 @@ a.ng-close em {
 	float: left;
 	width: 48px;
 	height: 48px;
-	/*background: url(images/npbg.png?v=2015102601) no-repeat;*/
+	background: url(images/npbg.png?v=2015102601) no-repeat;
 	text-indent: -999em;
 	overflow: hidden;
 	margin-right: 8px
@@ -1663,7 +1663,7 @@ a.ng-close em {
 	float: left;
 	display: inline-block;
 	height: 55px;
-	/*background: url(images/npbg.png?v=2015102601) no-repeat*/
+	background: url(images/npbg.png?v=2015102601) no-repeat
 }
 
 .ng-footer .ng-hot-line b.phone {
@@ -1776,7 +1776,7 @@ a.ng-close em {
 	height: 94px;
 	width: 140px;
 	margin-top: 3px;
-	/*background: url(images/npbg.png?v=2015102601) 0 -50px no-repeat*/
+	background: url(images/npbg.png?v=2015102601) 0 -50px no-repeat
 }
 
 .ng-footer .ng-serch-suning dd {
@@ -1809,7 +1809,7 @@ a.ng-close em {
 	margin-top: 5px;
 	text-indent: -999em;
 	overflow: hidden;
-	/*background: url(images/npbg.png?v=2015102601) -140px -49px no-repeat*/
+	background: url(images/npbg.png?v=2015102601) -140px -49px no-repeat
 }
 
 .ng-footer .ng-serch-suning dd a.srh-btn:hover {
@@ -1945,7 +1945,7 @@ a.ng-close em {
 	height: 42px;
 	border: 1px solid #cecece;
 	border-radius: 2px;
-	/*background: url(images/am.gif?v=2015102601) center center no-repeat #fff*/
+	background: url(images/am.gif?v=2015102601) center center no-repeat #fff
 }
 
 #snSideTools li a.sntool,
@@ -1964,11 +1964,11 @@ a.ng-close em {
 }
 
 #snSideTools li a.sntool2 {
-	/*background: url(images/npbg.png?v=2015102601) 0 -248px no-repeat #F4F4F4*/
+	background: url(images/npbg.png?v=2015102601) 0 -248px no-repeat #F4F4F4
 }
 
 #snSideTools li a.sntool3 {
-	/*background: url(images/npbg.png?v=2015102601) -42px -248px no-repeat #F4F4F4*/
+	background: url(images/npbg.png?v=2015102601) -42px -248px no-repeat #F4F4F4
 }
 
 #snSideTools #gotop {
@@ -2089,7 +2089,7 @@ a.ng-close em {
 	margin: 10px 0 0 -1px;
 	_margin-top: 13px;
 	padding: 0 15px 0 17px;
-	/*background: url(images/public.sprite.png?v=20140825) -102px 5px no-repeat;*/
+	background: url(images/public.sprite.png?v=20140825) -102px 5px no-repeat;
 	font-size: 14px;
 	font-family: "Microsoft YaHei"
 }
@@ -2334,7 +2334,7 @@ a.ng-close em {
 	width: 17px;
 	height: 18px;
 	margin-right: 4px;
-	/*background: url(images/ui_bg.png?v=2015102601) 0 -40px no-repeat;*/
+	background: url(images/ui_bg.png?v=2015102601) 0 -40px no-repeat;
 	vertical-align: middle
 }
 
@@ -2387,7 +2387,7 @@ a.ng-close em {
 	display: inline-block;
 	width: 6px;
 	height: 9px;
-	/*background: url(images/ui_bg.png?v=2015102601) -160px -40px no-repeat;*/
+	background: url(images/ui_bg.png?v=2015102601) -160px -40px no-repeat;
 	overflow: hidden
 }
 
@@ -2404,7 +2404,7 @@ a.ng-close em {
 	height: 12px;
 	width: 12px;
 	line-height: 12px;
-	/*background: url(images/ui_bg.png) -388px -40px no-repeat;*/
+	background: url(images/ui_bg.png) -388px -40px no-repeat;
 	z-index: 20
 }
 
@@ -2656,7 +2656,7 @@ a.ng-close em {
 	right: 0;
 	width: 21px;
 	height: 55px;
-	/*background: url(images/cxbg.png?v=2016031001) -86px 0 no-repeat*/
+	background: url(images/cxbg.png?v=2016031001) -86px 0 no-repeat
 }
 
 .activity-list-wrapper {
@@ -2694,7 +2694,7 @@ a.ng-close em {
 	left: 0;
 	width: 100%;
 	height: 6px;
-	/*background: url(images/cxbg.png?v=2016031001) 0 -119px repeat-x*/
+	background: url(images/cxbg.png?v=2016031001) 0 -119px repeat-x
 }
 
 .activity-list-wrapper .main-enter {
@@ -2742,7 +2742,7 @@ a.ng-close em {
 	width: 81px;
 	height: 116px;
 	margin: 0 auto;
-	/*background: url(images/cxbg.png?v=2016031001) no-repeat*/
+	background: url(images/cxbg.png?v=2016031001) no-repeat
 }
 
 .activity-list .mobiledown .code img {

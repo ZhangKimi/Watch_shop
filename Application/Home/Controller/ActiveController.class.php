@@ -55,8 +55,6 @@ class ActiveController extends Controller {
 	            $this -> assign("email", $_SESSION['user']['email']);
 	            $this -> display("index");
 	            // $this->success('发送成功！',__MODULE__."/Login",3);
-	    	}else{
-	            $
 	    	}
     	}
     }

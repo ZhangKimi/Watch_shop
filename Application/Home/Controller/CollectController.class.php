@@ -4,18 +4,12 @@
 	class CollectController extends Controller {
 		public function index() {
 
-			
-			$this -> assign("shopNum", shopCartNum($_SESSION['user']['uid']));
-		    // 显示导航栏
-			$this -> assign("list", displayFirst());
-        	$this -> assign("result", displaySecond());
-        	$this -> assign("username", $_SESSION['user']['username']." 欢迎回来");
-        	$uid = $_SESSION['user']['uid'];
         	$mod = M("collect");
-            $info = $mod ->join('product ON collect.pid = product.pid')
-                         ->join('products_details ON collect.pid = products_details.pid')
-                         ->where("`uid` = $uid")
-                         ->select();
+            $info = $mod -> join('product ON collect.pid = product.pid')
+                         -> join('products_details ON collect.pid = products_details.pid')
+                         -> where("`uid` = $uid")
+                         -> ORDER("desc")
+                         -> select();
             $mod = M("products_details");
             // 用商品pid 品牌bid 将商品详情表与商品表和品牌表连接
         	$info1 = $mod -> join('product ON products_details.pid = product.pid')

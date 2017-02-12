@@ -78,7 +78,15 @@ class MyOrderController extends Controller {
         
         // 接收刚付款后的订单号
         $order_id = $_GET['id'];
-        
+        $this -> assign("remind", "<img src='".__ROOT__."/Public/images/success.gif' width='50px' style='float: left;margin-left: 30px;'>
+                    <h2 style='float:left;margin-top: 13px;'>恭喜您 , 支付成功！感谢您光顾精品腕表商城 您的购买的商品我们将尽快安排发货</h2>");
+        if(isset($_GET['center'])) {
+            if($_GET['center'] == "center");
+            $order_id = $_GET['id'];
+            $str = "<img src='".__ROOT__."/Public/images/success.gif' width='50px' style='float: left;margin-left: 30px;'><h2 style='float:left;margin-top: 13px;'>查看订单详情</h2>";
+            $this -> assign("remind", $str);
+        }
+
         $db = M('orders');
         $info = $db -> find($order_id);
         // 向前台模板传送订单数据
@@ -89,6 +97,7 @@ class MyOrderController extends Controller {
         $orderDetails = $mod -> where("`orderid` = '{$order_id}'") -> select();
         $this -> assign("orderDetails", $orderDetails);
         // $info => 订单数据            $result => 订单详情数据(已购买商品 ...)
+        
         $this -> display("index2");
     }
 

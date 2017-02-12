@@ -5,10 +5,10 @@ return array(
 	'DB_USER'   => 'root', // 用户名
 	'DB_PWD'    => '962464', // 密码
 	'DB_PREFIX' => '', // 数据库表前缀 
-	'DB_DSN'    => 'mysql:host=localhost;dbname=watch;charset=UTF8;', // PDO连接数据库DSN
+	'DB_DSN'    => 'mysql:host=127.0.0.1;dbname=watch;charset=UTF8;', // PDO连接数据库DSN
 
 	// 打开调试窗
-	'SHOW_PAGE_TRACE' =>  true,
+	// 'SHOW_PAGE_TRACE' =>  true,
 	/* 邮件系统配置 */
 	// smtp服务器的名称
 	'MAIL_HOST' =>'smtp.ym.163.com',
